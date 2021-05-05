@@ -13,5 +13,6 @@ namespace EinsteinHacking.Models
         public int UserProgressID { get; set; }
         public Challenge Challenge { get; set; }
         public Status Status { get; set; }
+        public int HintsUsed { get; set; }
     }
 }

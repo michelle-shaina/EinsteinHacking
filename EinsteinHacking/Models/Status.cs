@@ -9,7 +9,6 @@ namespace EinsteinHacking.Models
     public enum Status
     {
         UnTouched,
-        Started,
         InProgress,
         Ended,
     }
