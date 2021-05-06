@@ -1,11 +1,49 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    ".NETCoreApp,Version=v3.1": {
+      "EinsteinHacking.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/EinsteinHacking.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EinsteinHacking.Common.dll": {}
+        }
+      },
+      "EinsteinHacking.DB/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "EinsteinHacking.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/EinsteinHacking.DB.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EinsteinHacking.DB.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "EinsteinHacking.Common/1.0.0": {
+      "type": "project",
+      "path": "../EinsteinHacking.Common/EinsteinHacking.Common.csproj",
+      "msbuildProject": "../EinsteinHacking.Common/EinsteinHacking.Common.csproj"
+    },
+    "EinsteinHacking.DB/1.0.0": {
+      "type": "project",
+      "path": "../EinsteinHacking.DB/EinsteinHacking.DB.csproj",
+      "msbuildProject": "../EinsteinHacking.DB/EinsteinHacking.DB.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    ".NETCoreApp,Version=v3.1": [
+      "EinsteinHacking.Common >= 1.0.0",
+      "EinsteinHacking.DB >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Lucien Käser\\.nuget\\packages\\": {},
@@ -32,16 +70,23 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0"
+        "netcoreapp3.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
-          "projectReferences": {}
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "projectReferences": {
+            "C:\\Development\\EinsteinHacking\\EinsteinHacking.Common\\EinsteinHacking.Common.csproj": {
+              "projectPath": "C:\\Development\\EinsteinHacking\\EinsteinHacking.Common\\EinsteinHacking.Common.csproj"
+            },
+            "C:\\Development\\EinsteinHacking\\EinsteinHacking.DB\\EinsteinHacking.DB.csproj": {
+              "projectPath": "C:\\Development\\EinsteinHacking\\EinsteinHacking.DB\\EinsteinHacking.DB.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -51,8 +96,8 @@
       }
     },
     "frameworks": {
-      "net5.0": {
-        "targetAlias": "net5.0",
+      "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",

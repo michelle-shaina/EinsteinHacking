@@ -388,3 +388,9 @@ C:\Development\EinsteinHacking\EinsteinHacking\obj\Debug\netcoreapp3.1\EinsteinH
 C:\Development\EinsteinHacking\EinsteinHacking\obj\Debug\netcoreapp3.1\EinsteinHacking.dll
 C:\Development\EinsteinHacking\EinsteinHacking\obj\Debug\netcoreapp3.1\EinsteinHacking.pdb
 C:\Development\EinsteinHacking\EinsteinHacking\obj\Debug\netcoreapp3.1\EinsteinHacking.genruntimeconfig.cache
+C:\Development\EinsteinHacking\EinsteinHacking\bin\Debug\netcoreapp3.1\EinsteinHacking.Common.dll
+C:\Development\EinsteinHacking\EinsteinHacking\bin\Debug\netcoreapp3.1\EinsteinHacking.DB.dll
+C:\Development\EinsteinHacking\EinsteinHacking\bin\Debug\netcoreapp3.1\EinsteinHacking.Logic.dll
+C:\Development\EinsteinHacking\EinsteinHacking\bin\Debug\netcoreapp3.1\EinsteinHacking.Common.pdb
+C:\Development\EinsteinHacking\EinsteinHacking\bin\Debug\netcoreapp3.1\EinsteinHacking.Logic.pdb
+C:\Development\EinsteinHacking\EinsteinHacking\bin\Debug\netcoreapp3.1\EinsteinHacking.DB.pdb

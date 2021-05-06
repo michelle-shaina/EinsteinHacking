@@ -2645,6 +2645,43 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "EinsteinHacking.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/EinsteinHacking.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EinsteinHacking.Common.dll": {}
+        }
+      },
+      "EinsteinHacking.DB/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "EinsteinHacking.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/EinsteinHacking.DB.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EinsteinHacking.DB.dll": {}
+        }
+      },
+      "EinsteinHacking.Logic/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "EinsteinHacking.Common": "1.0.0",
+          "EinsteinHacking.DB": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/EinsteinHacking.Logic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EinsteinHacking.Logic.dll": {}
+        }
       }
     }
   },
@@ -8519,10 +8556,27 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "EinsteinHacking.Common/1.0.0": {
+      "type": "project",
+      "path": "../EinsteinHacking.Common/EinsteinHacking.Common.csproj",
+      "msbuildProject": "../EinsteinHacking.Common/EinsteinHacking.Common.csproj"
+    },
+    "EinsteinHacking.DB/1.0.0": {
+      "type": "project",
+      "path": "../EinsteinHacking.DB/EinsteinHacking.DB.csproj",
+      "msbuildProject": "../EinsteinHacking.DB/EinsteinHacking.DB.csproj"
+    },
+    "EinsteinHacking.Logic/1.0.0": {
+      "type": "project",
+      "path": "../EinsteinHacking.Logic/EinsteinHacking.Logic.csproj",
+      "msbuildProject": "../EinsteinHacking.Logic/EinsteinHacking.Logic.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "EinsteinHacking.Common >= 1.0.0",
+      "EinsteinHacking.Logic >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 3.1.5",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.5",
       "Microsoft.AspNetCore.Identity.UI >= 3.1.5",
@@ -8565,7 +8619,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Development\\EinsteinHacking\\EinsteinHacking.Common\\EinsteinHacking.Common.csproj": {
+              "projectPath": "C:\\Development\\EinsteinHacking\\EinsteinHacking.Common\\EinsteinHacking.Common.csproj"
+            },
+            "C:\\Development\\EinsteinHacking\\EinsteinHacking.Logic\\EinsteinHacking.Logic.csproj": {
+              "projectPath": "C:\\Development\\EinsteinHacking\\EinsteinHacking.Logic\\EinsteinHacking.Logic.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

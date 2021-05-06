@@ -1,0 +1,9 @@
+C:\Development\EinsteinHacking\EinsteinHacking.Common\bin\Debug\netcoreapp3.1\EinsteinHacking.Common.deps.json
+C:\Development\EinsteinHacking\EinsteinHacking.Common\bin\Debug\netcoreapp3.1\EinsteinHacking.Common.dll
+C:\Development\EinsteinHacking\EinsteinHacking.Common\bin\Debug\netcoreapp3.1\EinsteinHacking.Common.pdb
+C:\Development\EinsteinHacking\EinsteinHacking.Common\obj\Debug\netcoreapp3.1\EinsteinHacking.Common.csprojAssemblyReference.cache
+C:\Development\EinsteinHacking\EinsteinHacking.Common\obj\Debug\netcoreapp3.1\EinsteinHacking.Common.AssemblyInfoInputs.cache
+C:\Development\EinsteinHacking\EinsteinHacking.Common\obj\Debug\netcoreapp3.1\EinsteinHacking.Common.AssemblyInfo.cs
+C:\Development\EinsteinHacking\EinsteinHacking.Common\obj\Debug\netcoreapp3.1\EinsteinHacking.Common.csproj.CoreCompileInputs.cache
+C:\Development\EinsteinHacking\EinsteinHacking.Common\obj\Debug\netcoreapp3.1\EinsteinHacking.Common.dll
+C:\Development\EinsteinHacking\EinsteinHacking.Common\obj\Debug\netcoreapp3.1\EinsteinHacking.Common.pdb

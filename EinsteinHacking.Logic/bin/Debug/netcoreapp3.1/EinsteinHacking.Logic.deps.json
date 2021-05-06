@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "EinsteinHacking.Logic/1.0.0": {
+        "dependencies": {
+          "EinsteinHacking.Common": "1.0.0",
+          "EinsteinHacking.DB": "1.0.0"
+        },
+        "runtime": {
+          "EinsteinHacking.Logic.dll": {}
+        }
+      },
+      "EinsteinHacking.Common/1.0.0": {
+        "runtime": {
+          "EinsteinHacking.Common.dll": {}
+        }
+      },
+      "EinsteinHacking.DB/1.0.0": {
+        "dependencies": {
+          "EinsteinHacking.Common": "1.0.0"
+        },
+        "runtime": {
+          "EinsteinHacking.DB.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EinsteinHacking.Logic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EinsteinHacking.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EinsteinHacking.DB/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
