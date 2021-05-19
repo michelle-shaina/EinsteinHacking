@@ -1,2 +1,23 @@
-﻿body {
+﻿@import 'variables';
+
+body {
+    background-color: $background-color;
+}
+
+p {
+    color: $base-font-color;
+}
+
+strong, .bold {
+    color: $bold-font-color;
+    font-weight: 500;
+}
+
+a {
+    color: $link-color;
+
+    :hover {
+        color: $link-hover-color;
+        transition-duration: 200ms;
+    }
 }

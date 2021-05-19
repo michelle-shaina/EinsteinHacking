@@ -1,2 +1,14 @@
-﻿body {
+﻿@font-face {
+    font-family: fira;
+    src: url(https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap);
 }
+
+$background-color: #383a59;
+$base-font-color: #8a8f8;
+$bold-font-color: #fff;
+$header-color: $bold-font-color;
+
+$link-color: #324376;
+$link-hover-color: #586ba4;
+
+$base-font: 'fira', monospace, sans-serif;
