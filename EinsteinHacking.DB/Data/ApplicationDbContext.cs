@@ -12,7 +12,7 @@ namespace EinsteinHacking.Data
         public DbSet<Challenge> Challenges { get; set; }
         public DbSet<Hint> Hints { get; set; }
         public DbSet<UserInformation> UserInformation { get; set; }
-        public DbSet<UserProgress> UserProgresses { get; set; }
+        public DbSet<UserProgress> UserProgress { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

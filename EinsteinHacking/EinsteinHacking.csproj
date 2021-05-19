@@ -17,6 +17,9 @@
   <ItemGroup>
     <ProjectReference Include="..\EinsteinHacking.Common\EinsteinHacking.Common.csproj" />
     <ProjectReference Include="..\EinsteinHacking.Logic\EinsteinHacking.Logic.csproj" />
+    <ProjectReference Include="..\EinsteinHacking.DB\EinsteinHacking.DB.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>
