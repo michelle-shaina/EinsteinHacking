@@ -1,0 +1,12 @@
+C:\Development\EinsteinHacking\EinsteinHacking.Common\bin\Debug\net5.0\EinsteinHacking.Common.deps.json
+C:\Development\EinsteinHacking\EinsteinHacking.Common\bin\Debug\net5.0\EinsteinHacking.Common.dll
+C:\Development\EinsteinHacking\EinsteinHacking.Common\bin\Debug\net5.0\ref\EinsteinHacking.Common.dll
+C:\Development\EinsteinHacking\EinsteinHacking.Common\bin\Debug\net5.0\EinsteinHacking.Common.pdb
+C:\Development\EinsteinHacking\EinsteinHacking.Common\obj\Debug\net5.0\EinsteinHacking.Common.csprojAssemblyReference.cache
+C:\Development\EinsteinHacking\EinsteinHacking.Common\obj\Debug\net5.0\EinsteinHacking.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Development\EinsteinHacking\EinsteinHacking.Common\obj\Debug\net5.0\EinsteinHacking.Common.AssemblyInfoInputs.cache
+C:\Development\EinsteinHacking\EinsteinHacking.Common\obj\Debug\net5.0\EinsteinHacking.Common.AssemblyInfo.cs
+C:\Development\EinsteinHacking\EinsteinHacking.Common\obj\Debug\net5.0\EinsteinHacking.Common.csproj.CoreCompileInputs.cache
+C:\Development\EinsteinHacking\EinsteinHacking.Common\obj\Debug\net5.0\EinsteinHacking.Common.dll
+C:\Development\EinsteinHacking\EinsteinHacking.Common\obj\Debug\net5.0\ref\EinsteinHacking.Common.dll
+C:\Development\EinsteinHacking\EinsteinHacking.Common\obj\Debug\net5.0\EinsteinHacking.Common.pdb

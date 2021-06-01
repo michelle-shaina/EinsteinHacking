@@ -1,0 +1,35 @@
+﻿<Properties StartupConfiguration="{92218DD0-DB7A-4047-BA5E-069A6865A741}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EinsteinHacking/appsettings.json">
+    <Files>
+      <File FileName="EinsteinHacking.DB/Data/ApplicationDbContext.cs" Line="21" Column="2" />
+      <File FileName="EinsteinHacking/appsettings.json" Line="3" Column="114" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="EinsteinHacking" expanded="True">
+            <Node name="EinsteinHacking" expanded="True">
+              <Node name="appsettings.json" selected="True" />
+            </Node>
+            <Node name="EinsteinHacking.Common" expanded="True">
+              <Node name="Models" expanded="True" />
+            </Node>
+            <Node name="EinsteinHacking.DB" expanded="True">
+              <Node name="Data" expanded="True" />
+            </Node>
+            <Node name="EinsteinHacking.Logic" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.EinsteinHacking PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

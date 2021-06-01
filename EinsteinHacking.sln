@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EinsteinHacking", "EinsteinHacking\EinsteinHacking.csproj", "{92218DD0-DB7A-4047-BA5E-069A6865A741}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EinsteinHacking", "EinsteinHacking\EinsteinHacking.csproj", "{92218DD0-DB7A-4047-BA5E-069A6865A741}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EinsteinHacking.DB", "EinsteinHacking.DB\EinsteinHacking.DB.csproj", "{8078F806-A57E-453C-B58A-494B56F7E595}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EinsteinHacking.Logic", "EinsteinHacking.Logic\EinsteinHacking.Logic.csproj", "{B3E714A7-B0BE-426D-B700-070ECB662B02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EinsteinHacking.Common", "EinsteinHacking.Common\EinsteinHacking.Common.csproj", "{5D3F3652-9436-4420-978C-814C4C3BD9AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{92218DD0-DB7A-4047-BA5E-069A6865A741}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92218DD0-DB7A-4047-BA5E-069A6865A741}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92218DD0-DB7A-4047-BA5E-069A6865A741}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8078F806-A57E-453C-B58A-494B56F7E595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8078F806-A57E-453C-B58A-494B56F7E595}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8078F806-A57E-453C-B58A-494B56F7E595}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8078F806-A57E-453C-B58A-494B56F7E595}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3E714A7-B0BE-426D-B700-070ECB662B02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3E714A7-B0BE-426D-B700-070ECB662B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3E714A7-B0BE-426D-B700-070ECB662B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3E714A7-B0BE-426D-B700-070ECB662B02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D3F3652-9436-4420-978C-814C4C3BD9AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D3F3652-9436-4420-978C-814C4C3BD9AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D3F3652-9436-4420-978C-814C4C3BD9AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D3F3652-9436-4420-978C-814C4C3BD9AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

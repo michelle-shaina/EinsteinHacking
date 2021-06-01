@@ -14,4 +14,12 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EinsteinHacking.Common\EinsteinHacking.Common.csproj" />
+    <ProjectReference Include="..\EinsteinHacking.Logic\EinsteinHacking.Logic.csproj" />
+    <ProjectReference Include="..\EinsteinHacking.DB\EinsteinHacking.DB.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+
 </Project>
