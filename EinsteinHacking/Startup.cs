@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using EinsteinHacking.Areas.Identity;
 using EinsteinHacking.Data;
+using EinsteinHacking.Logic;
 
 namespace EinsteinHacking
 {
@@ -38,6 +39,10 @@ namespace EinsteinHacking
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddScoped<ChallengeLogic>();
+            services.AddScoped<HintLogic>();
+            services.AddScoped<UserChallengeLogic>();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
         }
 
@@ -56,6 +61,8 @@ namespace EinsteinHacking
                 app.UseHsts();
             }
 
+
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

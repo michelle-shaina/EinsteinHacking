@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EinsteinHacking.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210505191736_PublicDBSetsAndRemovedFetchDataPage")]
-    partial class PublicDBSetsAndRemovedFetchDataPage
+    [Migration("20210606145339_DbSetup")]
+    partial class DbSetup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,7 +55,7 @@ namespace EinsteinHacking.Data.Migrations
 
                     b.HasKey("ChallengeID");
 
-                    b.ToTable("Challenges");
+                    b.ToTable("Challenges","mod");
                 });
 
             modelBuilder.Entity("EinsteinHacking.Models.Hint", b =>
@@ -87,7 +87,7 @@ namespace EinsteinHacking.Data.Migrations
 
                     b.HasIndex("ChallengeID");
 
-                    b.ToTable("Hints");
+                    b.ToTable("Hint","mod");
                 });
 
             modelBuilder.Entity("EinsteinHacking.Models.UserInformation", b =>
@@ -114,7 +114,7 @@ namespace EinsteinHacking.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserInformation");
+                    b.ToTable("UserInformation","mod");
                 });
 
             modelBuilder.Entity("EinsteinHacking.Models.UserProgress", b =>
@@ -136,6 +136,9 @@ namespace EinsteinHacking.Data.Migrations
                     b.Property<DateTime>("DeletedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("HintsUsed")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -148,7 +151,7 @@ namespace EinsteinHacking.Data.Migrations
 
                     b.HasIndex("UserInformationKey");
 
-                    b.ToTable("UserProgresses");
+                    b.ToTable("UserProgress","mod");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

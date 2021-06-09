@@ -22,4 +22,10 @@
     </ProjectReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Pages\Tempelate\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Tempelate\" />
+  </ItemGroup>
 </Project>
