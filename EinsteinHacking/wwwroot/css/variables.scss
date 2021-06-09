@@ -3,12 +3,37 @@
     src: url(https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap);
 }
 
-$background-color: #383a59;
-$base-font-color: #8a8f8;
+
+/*** Colors ***/
+$background-color: #22212c;
+
+$base-box-color: #414558;
+$cyan-box-color: #80ffea;
+$green-box-color: #50fa7a;
+$red-box-color: #ff9581;
+$orange-box-color: #ffca81;
+$yellow-box-color: #f3ea62;
+$purple-box-color: #6d57de;
+
+$blue-border-color: #5922e5;
+$yellow-border-color: #d8bd14;
+
+/*** Fonts ***/
+$link-color: #9580FF;
+$link-hover-color: #586bdf;
+$base-font-color: #8a8f98;
 $bold-font-color: #fff;
 $header-color: $bold-font-color;
 
-$link-color: #324376;
-$link-hover-color: #586ba4;
-
 $base-font: 'fira', monospace, sans-serif;
+
+
+/*** Page header ***/
+$page-header-color: #282a36;
+
+/*** Forms ***/
+$input-background-color: $page-header-color;
+
+/*** Spacing-System ***/
+$spacing-s: 20px;
+$spacing-border-color: $base-font-color;

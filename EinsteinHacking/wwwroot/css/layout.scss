@@ -2,22 +2,162 @@
 
 body {
     background-color: $background-color;
-}
-
-p {
+    font-family: $base-font;
     color: $base-font-color;
 }
 
-strong, .bold {
-    color: $bold-font-color;
-    font-weight: 500;
+
+.main {
+    .top-row {
+        background-color: $page-header-color;
+        box-shadow: 0 0 10px -10px rgba(0, 0, 0, 0.15);
+        border-bottom: none;
+        z-index: 5;
+    }
+
+    .oi {
+        color: $bold-font-color;
+    }
+
+    .card {
+        background-color: #414558;
+        color: #8a8f98;
+        margin-bottom: $spacing-s;
+        transition-duration: .5s;
+
+        &:hover {
+            transform: translate(4px, -4px);
+            transition-duration: .5s;
+            box-shadow: -8px 8px 0 $blue-border-color;
+        }
+    }
+
+    p {
+        color: $base-font-color;
+    }
+
+    strong, .bold {
+        color: $bold-font-color;
+        font-weight: 500;
+    }
+
+    a {
+        color: $link-color;
+        transition-duration: .2s;
+
+        &:hover {
+            transition-duration: .2s;
+            color: $link-hover-color;
+
+        }
+    }
+
+    h1, h2, h3, h4, h5 {
+        color: $header-color;
+    }
+
+    [class="alert-"]:hover {
+        box-shadow: 0 0 10px -10px rgba(0, 0, 0, 0.15);
+        transition-duration: .5s;
+    }
+
+    .alert-primary, .alert-secondary {
+        background-color: $base-box-color;
+        color: $base-font-color;
+    }
+
+    .alert-success {
+        background-color: $green-box-color;
+        color: $base-font-color;
+    }
+
+    .alert-danger {
+        background-color: $red-box-color;
+        color: $base-font-color;
+    }
+
+    .alert-warning {
+        background-color: $orange-box-color;
+        color: $base-font-color;
+    }
+
+    [type=button].btn {
+
+        color: $bold-font-color;
+
+        &.btn-primary {
+            background-color: $purple-box-color;
+            border: $blue-border-color;
+        }
+
+        &.btn-secondary {
+            background-color: $base-box-color;
+        }
+
+        &.btn-success {
+            background-color: $green-box-color;
+        }
+
+        &.btn-danger {
+            background-color: $red-box-color;
+        }
+
+        &.btn-warning {
+            background-color: $orange-box-color;
+        }
+
+        &.btn-info {
+            background-color: $yellow-box-color;
+            border-color: $yellow-border-color;
+        }
+
+        &.btn-link {
+            transition-duration: .2s;
+
+            &:hover {
+                transition-duration: .2s;
+                color: $link-hover-color;
+            }
+        }
+    }
+
+    table {
+        color: $base-font-color;
+
+        th {
+            color: $bold-font-color;
+        }
+    }
 }
 
-a {
-    color: $link-color;
-
-    :hover {
-        color: $link-hover-color;
-        transition-duration: 200ms;
+.sidebar {
+    .top-row {
+        background-color: $page-header-color;
     }
+
+    background-color: $page-header-color;
+    background-image: none;
+}
+
+
+input.form-control {
+    background-color: $input-background-color;
+    border: 1px solid $blue-border-color;
+    color: $bold-font-color;
+
+    & [type="search"] {
+        color: $bold-font-color;
+    }
+
+}
+
+.margin-bottom-s {
+    margin-bottom: $spacing-s;
+}
+
+.margin-top-s {
+    margin-top: $spacing-s;
+}
+footer {
+    border-top: 1px solid $spacing-border-color;
 }
