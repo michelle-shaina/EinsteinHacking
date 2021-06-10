@@ -28,7 +28,7 @@ namespace EinsteinHacking.Logic
 
             //IdentityUser user = _context.Users.FirstOrDefault(n => n.UserName == username);
             UserInformation userInformation = _context.UserInformation.Include("Progress").FirstOrDefault(n => n.User.NormalizedUserName == username.ToUpper());
-            if(userInformation == null || userInformation.Progress == null || userInformation.Progress.Count == 0)
+            if (userInformation == null || userInformation.Progress == null || userInformation.Progress.Count == 0)
             {
                 //_context.UserInformation.Remove(userInformation);
                 StartUserChallenges(username);
@@ -101,10 +101,15 @@ namespace EinsteinHacking.Logic
             {
                 int numberOfHintsAvailable = hints.Count();
                 int numberOfHintsUsed = userProgress.HintsUsed;
-                return hints[numberOfHintsUsed];
+                if (numberOfHintsAvailable > numberOfHintsUsed)
+                {
+                    userProgress.HintsUsed++;
+                    _context.UserProgress.Update(userProgress);
+                    _context.SaveChanges();
+                    return hints[numberOfHintsUsed];
+                }
             }
-            else
-                return null;
+            return null;
         }
 
         /// <summary>
@@ -169,7 +174,7 @@ namespace EinsteinHacking.Logic
             var UserInformation = _context.UserInformation.FirstOrDefault(u => u.User.NormalizedUserName == username.ToUpper());
             var userProgress = _context.UserProgress.Include("Challenge").Where(n => n.Challenge.ChallengeID == challengeID);
 
-            foreach(var progress in userProgress)
+            foreach (var progress in userProgress)
             {
                 foreach (var pro in UserInformation.Progress)
                 {

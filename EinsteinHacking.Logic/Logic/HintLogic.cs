@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using EinsteinHacking.Data;
 using EinsteinHacking.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EinsteinHacking.Logic
 {
@@ -31,7 +32,7 @@ namespace EinsteinHacking.Logic
         /// <returns></returns>
         public IEnumerable<Hint> GetHintsFromChallenge(int challengeID)
         {
-            return _context.Challenges.FirstOrDefault(n => n.ChallengeID == challengeID)?.Hints;
+            return _context.Challenges.Include("Hints").FirstOrDefault(n => n.ChallengeID == challengeID)?.Hints;
         }
     }
 }

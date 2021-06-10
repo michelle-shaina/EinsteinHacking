@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using EinsteinHacking.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace EinsteinHacking.Logic
 {
@@ -18,7 +20,24 @@ namespace EinsteinHacking.Logic
         /// <returns></returns>
         public int GetUserScore(string userID)
         {
-            throw new NotImplementedException();
+            int score = 0;
+            if (String.IsNullOrEmpty(userID)) return 0;
+            var userProgress = _context.UserInformation.Include("Progress")
+                .FirstOrDefault(n => n.User.NormalizedUserName == userID.ToUpper())?.Progress;
+            foreach (var progress in userProgress)
+            {
+                if(progress.Status == Models.Status.Ended)
+                {
+                    var targetChallenge = _context.UserProgress.Include("Challenge")
+                        .FirstOrDefault(n => n.UserProgressID == progress.UserProgressID)?.Challenge;
+                    if(targetChallenge != null)
+                    {
+                        score += targetChallenge.PointsOnCompletion;
+                        score -= (targetChallenge.PointsRemovedPerHintUsed * progress.HintsUsed);
+                    }
+                }
+            }
+            return score;
         }
     }
 }
