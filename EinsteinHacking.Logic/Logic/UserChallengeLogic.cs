@@ -16,34 +16,6 @@ namespace EinsteinHacking.Logic
             this._context = context;
         }
 
-        /// <summary>
-        /// Gives the User all challenges with the untuched status,
-        /// will prepare his account for the challenges
-        /// </summary>
-        public void StartUserChallenges(string username)
-        {
-            var user = _context.Users.FirstOrDefault(c => c.NormalizedUserName == username.ToUpper());
-            if (user != null)
-            {
-                UserInformation userInformation = new UserInformation()
-                {
-                    User = user,
-                    Progress = new List<UserProgress>(),
-                };
-                foreach (var challenge in _context.Challenges)
-                {
-                    userInformation.Progress.Add(new UserProgress()
-                    {
-                        Challenge = challenge,
-                        Status = Status.UnTouched,
-                        HintsUsed = 0,
-                    });
-                }
-
-                _context.UserInformation.Add(userInformation);
-                _context.SaveChanges();
-            }
-        }
 
         /// <summary>
         /// Checks if the User has all challenges and if not, creates them 
@@ -153,8 +125,32 @@ namespace EinsteinHacking.Logic
         }
 
 
-
         //private methods
+        private void StartUserChallenges(string username)
+        {
+            var user = _context.Users.FirstOrDefault(c => c.NormalizedUserName == username.ToUpper());
+            if (user != null)
+            {
+                UserInformation userInformation = new UserInformation()
+                {
+                    User = user,
+                    Progress = new List<UserProgress>(),
+                };
+                foreach (var challenge in _context.Challenges)
+                {
+                    userInformation.Progress.Add(new UserProgress()
+                    {
+                        Challenge = challenge,
+                        Status = Status.UnTouched,
+                        HintsUsed = 0,
+                    });
+                }
+
+                _context.UserInformation.Add(userInformation);
+                _context.SaveChanges();
+            }
+        }
+
         private void UserSetStatus(string username, int challengeID, Status status)
         {
             CheckUserhasChallenges(username.ToUpper());
