@@ -3,12 +3,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EinsteinHacking.Data.Migrations
 {
-    public partial class InitialModels : Migration
+    public partial class DbSetup : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "mod");
+
             migrationBuilder.CreateTable(
                 name: "Challenges",
+                schema: "mod",
                 columns: table => new
                 {
                     ChallengeID = table.Column<int>(nullable: false)
@@ -29,6 +33,7 @@ namespace EinsteinHacking.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UserInformation",
+                schema: "mod",
                 columns: table => new
                 {
                     UserInformationKey = table.Column<int>(nullable: false)
@@ -50,7 +55,8 @@ namespace EinsteinHacking.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Hints",
+                name: "Hint",
+                schema: "mod",
                 columns: table => new
                 {
                     HintID = table.Column<int>(nullable: false)
@@ -64,17 +70,19 @@ namespace EinsteinHacking.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Hints", x => x.HintID);
+                    table.PrimaryKey("PK_Hint", x => x.HintID);
                     table.ForeignKey(
-                        name: "FK_Hints_Challenges_ChallengeID",
+                        name: "FK_Hint_Challenges_ChallengeID",
                         column: x => x.ChallengeID,
+                        principalSchema: "mod",
                         principalTable: "Challenges",
                         principalColumn: "ChallengeID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "userProgresses",
+                name: "UserProgress",
+                schema: "mod",
                 columns: table => new
                 {
                     UserProgressID = table.Column<int>(nullable: false)
@@ -84,59 +92,70 @@ namespace EinsteinHacking.Data.Migrations
                     DeletedAt = table.Column<DateTime>(nullable: false),
                     ChallengeID = table.Column<int>(nullable: true),
                     Status = table.Column<int>(nullable: false),
+                    HintsUsed = table.Column<int>(nullable: false),
                     UserInformationKey = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_userProgresses", x => x.UserProgressID);
+                    table.PrimaryKey("PK_UserProgress", x => x.UserProgressID);
                     table.ForeignKey(
-                        name: "FK_userProgresses_Challenges_ChallengeID",
+                        name: "FK_UserProgress_Challenges_ChallengeID",
                         column: x => x.ChallengeID,
+                        principalSchema: "mod",
                         principalTable: "Challenges",
                         principalColumn: "ChallengeID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_userProgresses_UserInformation_UserInformationKey",
+                        name: "FK_UserProgress_UserInformation_UserInformationKey",
                         column: x => x.UserInformationKey,
+                        principalSchema: "mod",
                         principalTable: "UserInformation",
                         principalColumn: "UserInformationKey",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Hints_ChallengeID",
-                table: "Hints",
+                name: "IX_Hint_ChallengeID",
+                schema: "mod",
+                table: "Hint",
                 column: "ChallengeID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserInformation_UserId",
+                schema: "mod",
                 table: "UserInformation",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_userProgresses_ChallengeID",
-                table: "userProgresses",
+                name: "IX_UserProgress_ChallengeID",
+                schema: "mod",
+                table: "UserProgress",
                 column: "ChallengeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_userProgresses_UserInformationKey",
-                table: "userProgresses",
+                name: "IX_UserProgress_UserInformationKey",
+                schema: "mod",
+                table: "UserProgress",
                 column: "UserInformationKey");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Hints");
+                name: "Hint",
+                schema: "mod");
 
             migrationBuilder.DropTable(
-                name: "userProgresses");
+                name: "UserProgress",
+                schema: "mod");
 
             migrationBuilder.DropTable(
-                name: "Challenges");
+                name: "Challenges",
+                schema: "mod");
 
             migrationBuilder.DropTable(
-                name: "UserInformation");
+                name: "UserInformation",
+                schema: "mod");
         }
     }
 }

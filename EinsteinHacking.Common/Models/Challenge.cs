@@ -20,5 +20,11 @@ namespace EinsteinHacking.Models
         public string LinkToexplanationVideo { get; set; }
         public List<Hint> Hints { get; set; }
 
+        public bool IsValid =>  !String.IsNullOrEmpty(Name)
+                    && !String.IsNullOrEmpty(Name)
+                    && PointsOnCompletion > 0
+                    && PointsRemovedPerHintUsed > 0;
+        
+
     }
 }

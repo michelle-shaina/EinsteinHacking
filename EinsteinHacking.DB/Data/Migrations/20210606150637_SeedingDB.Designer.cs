@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EinsteinHacking.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210505192817_HintsUsedOnUserProgress")]
-    partial class HintsUsedOnUserProgress
+    [Migration("20210606150637_SeedingDB")]
+    partial class SeedingDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,7 +55,119 @@ namespace EinsteinHacking.Data.Migrations
 
                     b.HasKey("ChallengeID");
 
-                    b.ToTable("Challenges");
+                    b.ToTable("Challenges","mod");
+
+                    b.HasData(
+                        new
+                        {
+                            ChallengeID = 1,
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 106, DateTimeKind.Local).AddTicks(8790),
+                            Deleted = false,
+                            DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Basic combination safety (The password is a combination of 4 numbers)",
+                            Name = "Challenge 1",
+                            PointsOnCompletion = 3,
+                            PointsRemovedPerHintUsed = 0
+                        },
+                        new
+                        {
+                            ChallengeID = 2,
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(990),
+                            Deleted = false,
+                            DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Basic password safety",
+                            Name = "Challenge 2",
+                            PointsOnCompletion = 4,
+                            PointsRemovedPerHintUsed = 1
+                        },
+                        new
+                        {
+                            ChallengeID = 3,
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1030),
+                            Deleted = false,
+                            DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Basic Website Safety",
+                            Name = "Challenge 3",
+                            PointsOnCompletion = 8,
+                            PointsRemovedPerHintUsed = 2
+                        },
+                        new
+                        {
+                            ChallengeID = 4,
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1030),
+                            Deleted = false,
+                            DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Cookies",
+                            Name = "Challenge 4",
+                            PointsOnCompletion = 10,
+                            PointsRemovedPerHintUsed = 3
+                        },
+                        new
+                        {
+                            ChallengeID = 5,
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1040),
+                            Deleted = false,
+                            DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Try every combination there is (The password is a combination of 8 lowercase letter in the english alphabet)",
+                            Name = "Challenge 5",
+                            PointsOnCompletion = 15,
+                            PointsRemovedPerHintUsed = 4
+                        },
+                        new
+                        {
+                            ChallengeID = 6,
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1040),
+                            Deleted = false,
+                            DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Social Engineering",
+                            Name = "Challenge 6",
+                            PointsOnCompletion = 20,
+                            PointsRemovedPerHintUsed = 5
+                        },
+                        new
+                        {
+                            ChallengeID = 7,
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1040),
+                            Deleted = false,
+                            DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "SQL ",
+                            Name = "Challenge 7",
+                            PointsOnCompletion = 25,
+                            PointsRemovedPerHintUsed = 6
+                        },
+                        new
+                        {
+                            ChallengeID = 8,
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1040),
+                            Deleted = false,
+                            DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Encryption",
+                            Name = "Challenge 8",
+                            PointsOnCompletion = 20,
+                            PointsRemovedPerHintUsed = 5
+                        },
+                        new
+                        {
+                            ChallengeID = 9,
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1050),
+                            Deleted = false,
+                            DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Steganografie",
+                            Name = "Challenge 9",
+                            PointsOnCompletion = 25,
+                            PointsRemovedPerHintUsed = 16
+                        },
+                        new
+                        {
+                            ChallengeID = 10,
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1050),
+                            Deleted = false,
+                            DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Certificate fun",
+                            Name = "Challenge 10",
+                            PointsOnCompletion = 30,
+                            PointsRemovedPerHintUsed = 7
+                        });
                 });
 
             modelBuilder.Entity("EinsteinHacking.Models.Hint", b =>
@@ -87,7 +199,7 @@ namespace EinsteinHacking.Data.Migrations
 
                     b.HasIndex("ChallengeID");
 
-                    b.ToTable("Hints");
+                    b.ToTable("Hint","mod");
                 });
 
             modelBuilder.Entity("EinsteinHacking.Models.UserInformation", b =>
@@ -114,7 +226,7 @@ namespace EinsteinHacking.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserInformation");
+                    b.ToTable("UserInformation","mod");
                 });
 
             modelBuilder.Entity("EinsteinHacking.Models.UserProgress", b =>
@@ -151,7 +263,7 @@ namespace EinsteinHacking.Data.Migrations
 
                     b.HasIndex("UserInformationKey");
 
-                    b.ToTable("UserProgresses");
+                    b.ToTable("UserProgress","mod");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -14,6 +14,8 @@ namespace EinsteinHacking.Models
         public int HintID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+
+        public bool IsValid => !String.IsNullOrEmpty(Name) && !String.IsNullOrEmpty(Description);
         
     }
 }
