@@ -16,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using EinsteinHacking.Areas.Identity;
 using EinsteinHacking.Data;
 using EinsteinHacking.Logic;
+using EinsteinHacking.Services;
 
 namespace EinsteinHacking
 {
@@ -40,6 +41,7 @@ namespace EinsteinHacking
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
+            services.AddScoped<AlertState>();
             services.AddScoped<ChallengeLogic>();
             services.AddScoped<HintLogic>();
             services.AddScoped<UserChallengeLogic>();

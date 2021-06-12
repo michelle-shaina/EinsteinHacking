@@ -1,0 +1,101 @@
+﻿@page "/Challenge/{id:int}"
+
+@using EinsteinHacking.Models
+@using EinsteinHacking.Services
+
+@inject AuthenticationStateProvider auth
+@inject EinsteinHacking.Services.AlertState AlertState
+@inject EinsteinHacking.Logic.ChallengeLogic ChallengeLogic
+@inject EinsteinHacking.Logic.HintLogic HintLogic
+@inject EinsteinHacking.Logic.UserChallengeLogic UserChallengeLogic
+
+<EinsteinHacking.Shared.Html>
+    <Content>
+        <div class="h-100">
+            <div class="card text-center">
+                <div class="card-header">
+                    Header
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title">@challenge.Name</h1>
+                    <h3 class="card-subtitle mb-2 text-muted">Introduction</h3>
+                    <p class="card-text">@challenge.Description</p>
+                    <br />
+                    <input @bind-value="@inputValue" class="input-group-lg" type="text" name="passwordsubmit" /> &nbsp;
+                    <button type="button" class="btn btn-primary" @onclick=onSubmit>Submit</button>
+                    <EinsteinHacking.Shared.Alert Title=@alert.AlertTitle Type=@alert.AlertType>
+                        <Content>
+                            <strong class="text-nowrap">@alert.AlertMessage</strong>
+                        </Content>
+                    </EinsteinHacking.Shared.Alert>
+                    <br />
+                    <br />
+                    <div class="accordion" id="HintAccordion">
+                        @foreach (Hint hint in hints)
+                        {
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="@hint.HintID">
+                                    <button @onclick="UseHint" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-@hint.HintID" aria-expanded="false" aria-controls="collapse-@hint.HintID">
+                                        Hint # @(challenge.Hints.IndexOf(hint) + 1)
+                                    </button>
+                                </h2>
+                                <div id="collapse-@hint.HintID" class="accordion-collapse collapse" aria-labelledby="heading-@hint.HintID" data-bs-parent="#HintAccordion">
+                                    <div class="accordion-body">
+                                        <strong>@hint.Name</strong>
+                                        <p>@hint.Description</p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+             </div>
+        </div>
+    </Content>
+</EinsteinHacking.Shared.Html>
+
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    public AlertModel alert { get; set; }
+
+    private IEnumerable<Hint> hints;
+    private Challenge challenge;
+    private Status status;
+    private string username;
+    private string inputValue;
+    private bool canUserUseHint;
+
+    protected override void OnInitialized()
+    {
+        username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
+        status = UserChallengeLogic.UserGetChallengeStatus(username, id);
+        UserChallengeLogic.UserStartChallenge(username, id);
+        challenge = ChallengeLogic.GetChallengeFull(id);
+        canUserUseHint = UserChallengeLogic.UserCanUseHint(username, id);
+        hints = challenge.Hints;
+        alert = AlertState.GetAlert();
+    }
+
+    private void UseHint()
+    {
+        if (canUserUseHint)
+        {
+            challenge.PointsOnCompletion -= challenge.PointsRemovedPerHintUsed;
+        }
+    }
+
+    private void onSubmit()
+    {
+        if (inputValue == "123")
+        {
+            AlertState.SetAlert("true");
+            UserChallengeLogic.UserCompleteChallenge(username, id);
+        } else
+        {
+            AlertState.SetAlert("false");
+        }
+    }
+}

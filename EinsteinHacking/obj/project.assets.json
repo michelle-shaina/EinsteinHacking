@@ -2672,7 +2672,10 @@
         },
         "runtime": {
           "bin/placeholder/EinsteinHacking.DB.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "EinsteinHacking.Logic/1.0.0": {
         "type": "project",
@@ -8593,38 +8596,39 @@
     ]
   },
   "packageFolders": {
-    "/Users/lucienkaser/.nuget/packages/": {}
+    "C:\\Users\\miche\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/lucienkaser/Development/EinsteinHacking/EinsteinHacking/EinsteinHacking.csproj",
+      "projectUniqueName": "C:\\Users\\miche\\Desktop\\EinsteinHacking\\EinsteinHacking\\EinsteinHacking\\EinsteinHacking.csproj",
       "projectName": "EinsteinHacking",
-      "projectPath": "/Users/lucienkaser/Development/EinsteinHacking/EinsteinHacking/EinsteinHacking.csproj",
-      "packagesPath": "/Users/lucienkaser/.nuget/packages/",
-      "outputPath": "/Users/lucienkaser/Development/EinsteinHacking/EinsteinHacking/obj/",
+      "projectPath": "C:\\Users\\miche\\Desktop\\EinsteinHacking\\EinsteinHacking\\EinsteinHacking\\EinsteinHacking.csproj",
+      "packagesPath": "C:\\Users\\miche\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\miche\\Desktop\\EinsteinHacking\\EinsteinHacking\\EinsteinHacking\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/lucienkaser/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\miche\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "/Users/lucienkaser/Development/EinsteinHacking/EinsteinHacking.Common/EinsteinHacking.Common.csproj": {
-              "projectPath": "/Users/lucienkaser/Development/EinsteinHacking/EinsteinHacking.Common/EinsteinHacking.Common.csproj"
+            "C:\\Users\\miche\\Desktop\\EinsteinHacking\\EinsteinHacking\\EinsteinHacking.Common\\EinsteinHacking.Common.csproj": {
+              "projectPath": "C:\\Users\\miche\\Desktop\\EinsteinHacking\\EinsteinHacking\\EinsteinHacking.Common\\EinsteinHacking.Common.csproj"
             },
-            "/Users/lucienkaser/Development/EinsteinHacking/EinsteinHacking.DB/EinsteinHacking.DB.csproj": {
-              "projectPath": "/Users/lucienkaser/Development/EinsteinHacking/EinsteinHacking.DB/EinsteinHacking.DB.csproj"
+            "C:\\Users\\miche\\Desktop\\EinsteinHacking\\EinsteinHacking\\EinsteinHacking.DB\\EinsteinHacking.DB.csproj": {
+              "projectPath": "C:\\Users\\miche\\Desktop\\EinsteinHacking\\EinsteinHacking\\EinsteinHacking.DB\\EinsteinHacking.DB.csproj"
             },
-            "/Users/lucienkaser/Development/EinsteinHacking/EinsteinHacking.Logic/EinsteinHacking.Logic.csproj": {
-              "projectPath": "/Users/lucienkaser/Development/EinsteinHacking/EinsteinHacking.Logic/EinsteinHacking.Logic.csproj"
+            "C:\\Users\\miche\\Desktop\\EinsteinHacking\\EinsteinHacking\\EinsteinHacking.Logic\\EinsteinHacking.Logic.csproj": {
+              "projectPath": "C:\\Users\\miche\\Desktop\\EinsteinHacking\\EinsteinHacking\\EinsteinHacking.Logic\\EinsteinHacking.Logic.csproj"
             }
           }
         }
@@ -8637,7 +8641,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
@@ -8682,7 +8685,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.202/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
