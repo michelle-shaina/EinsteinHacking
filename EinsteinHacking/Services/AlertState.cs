@@ -22,6 +22,11 @@ namespace EinsteinHacking.Services
                     alert.AlertType = "danger";
                     alert.AlertMessage = "The password is not correct. Try Again!";
                     break;
+                case "completed":
+                    alert.AlertTitle = "Alert: ";
+                    alert.AlertType = "warning";
+                    alert.AlertMessage = "You have already completed the Challenge. Try another one!";
+                    break;
                 case "neutral":
                     alert.AlertTitle = "";
                     alert.AlertType = "";
@@ -33,7 +38,7 @@ namespace EinsteinHacking.Services
                     alert.AlertMessage = "";
                     break;
             }
-            NotifyStateChanged();
+           // NotifyStateChanged();
         }
 
         public AlertModel GetAlert()
