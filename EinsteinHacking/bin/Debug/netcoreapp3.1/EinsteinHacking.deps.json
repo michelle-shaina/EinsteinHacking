@@ -27,6 +27,7 @@
           "EinsteinHacking.Common": "1.0.0",
           "EinsteinHacking.DB": "1.0.0",
           "EinsteinHacking.Logic": "1.0.0",
+          "Markdig": "0.25.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.5",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.5",
           "Microsoft.AspNetCore.Identity.UI": "3.1.5",
@@ -302,6 +303,17 @@
         },
         "compile": {
           "EinsteinHacking.dll": {}
+        }
+      },
+      "Markdig/0.25.0": {
+        "runtime": {
+          "lib/netcoreapp3.1/Markdig.dll": {
+            "assemblyVersion": "0.25.0.0",
+            "fileVersion": "0.25.0.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Markdig.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.5": {
@@ -3886,6 +3898,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Markdig/0.25.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8szvH6U9LvqIpc297eOwC2NEF6f6fsPIV25Vptq21uHgkGCjYxwfSLujcnZa8wgvu71BeK/P00kAbYb/T+OmpQ==",
+      "path": "markdig/0.25.0",
+      "hashPath": "markdig.0.25.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/3.1.5": {
       "type": "package",

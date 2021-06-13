@@ -1,8 +1,9 @@
-﻿@page "/Challenge7/{id:int}"
+﻿@page "/Challenge8/{id:int}"
 
 @using EinsteinHacking.Models
 @using EinsteinHacking.Services
 
+@inject MarkdownRendererReturner MarkdownReturner
 @inject NavigationManager Navigate
 @inject AuthenticationStateProvider auth
 @inject EinsteinHacking.Services.AlertState AlertState
@@ -20,7 +21,9 @@
                 <div class="card-body">
                     <h1 class="card-title">@challenge.Name</h1>
                     <h3 class="card-subtitle mb-2 text-muted">Introduction</h3>
-                    <p class="card-text">@challenge.Description</p>
+                    <p class="card-text">
+                        @challengeDescription
+                    </p>
                     <br />
                     <input @bind-value="@inputValue" disabled="@IsDisabled" class="input-group-lg" type="text" name="passwordsubmit" /> &nbsp;
                     <button type="button" disabled="@IsDisabled" class="btn btn-primary" @onclick=onSubmit>Submit</button>
@@ -45,7 +48,7 @@
                                     <div id="panelsStayOpen-@hint.HintID" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-@hint.HintID">
                                         <div class="accordion-body">
                                             <strong>@hint.Name</strong>
-                                            <p>@hint.Description</p>
+                                            @((MarkupString)hint.Description)
                                         </div>
                                     </div>
                                 </div>
@@ -65,11 +68,11 @@
     </Content>
 </EinsteinHacking.Shared.Html>
 
-
 @code {
     [Parameter]
     public int id { get; set; }
     protected bool IsDisabled { get; set; }
+    public MarkupString challengeDescription { get; set; }
     public AlertModel alert { get; set; }
 
     private IEnumerable<Hint> hints;
@@ -93,6 +96,7 @@
                 challenge = ChallengeLogic.GetChallengeFull(id);
                 canUserUseHint = UserChallengeLogic.UserCanUseHint(username, id);
                 hints = challenge.Hints;
+                styleHints();
                 break;
             case Status.Ended:
                 AlertState.SetAlert("completed");
@@ -102,6 +106,7 @@
             default:
                 break;
         }
+        challengeDescription = MarkdownReturner.GetMarkdown(challenge.Description);
         alert = AlertState.GetAlert();
     }
 
@@ -112,6 +117,14 @@
         {
             UserChallengeLogic.UserGetHint(username, id);
             challenge.PointsOnCompletion -= challenge.PointsRemovedPerHintUsed;
+        }
+    }
+
+    private void styleHints()
+    {
+        foreach (var hint in hints)
+        {
+            hint.Description = MarkdownReturner.GetMarkdown(hint.Description).ToString();
         }
     }
 
@@ -132,6 +145,6 @@
 
     private void NextChallenge()
     {
-        Navigate.NavigateTo($"/Challenge8/{8}");
+        Navigate.NavigateTo($"/Challenge9/{9}");
     }
 }

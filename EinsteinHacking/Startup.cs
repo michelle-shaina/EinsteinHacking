@@ -42,6 +42,7 @@ namespace EinsteinHacking
             services.AddServerSideBlazor();
 
             services.AddScoped<AlertState>();
+            services.AddScoped<MarkdownRendererReturner>();
             services.AddScoped<ChallengeLogic>();
             services.AddScoped<HintLogic>();
             services.AddScoped<UserChallengeLogic>();

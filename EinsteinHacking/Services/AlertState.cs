@@ -38,17 +38,11 @@ namespace EinsteinHacking.Services
                     alert.AlertMessage = "";
                     break;
             }
-           // NotifyStateChanged();
         }
 
         public AlertModel GetAlert()
         {
             return alert;
-        }
-
-        private void NotifyStateChanged()
-        {
-            OnChange?.Invoke();
         }
     }
 }
