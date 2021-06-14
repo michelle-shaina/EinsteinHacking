@@ -51,9 +51,6 @@ namespace EinsteinHacking.Data.Migrations
                     b.Property<int>("PointsRemovedPerHintUsed")
                         .HasColumnType("int");
 
-                    b.Property<string>("Solution")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("ChallengeID");
 
                     b.ToTable("Challenges","mod");
@@ -62,7 +59,7 @@ namespace EinsteinHacking.Data.Migrations
                         new
                         {
                             ChallengeID = 1,
-                            CreatedAt = new DateTime(2021, 6, 13, 18, 51, 22, 424, DateTimeKind.Local).AddTicks(6660),
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 106, DateTimeKind.Local).AddTicks(8790),
                             Deleted = false,
                             DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Basic combination safety (The password is a combination of 4 numbers)",
@@ -73,7 +70,7 @@ namespace EinsteinHacking.Data.Migrations
                         new
                         {
                             ChallengeID = 2,
-                            CreatedAt = new DateTime(2021, 6, 13, 18, 51, 22, 430, DateTimeKind.Local).AddTicks(1510),
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(990),
                             Deleted = false,
                             DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Basic password safety",
@@ -84,7 +81,7 @@ namespace EinsteinHacking.Data.Migrations
                         new
                         {
                             ChallengeID = 3,
-                            CreatedAt = new DateTime(2021, 6, 13, 18, 51, 22, 430, DateTimeKind.Local).AddTicks(1560),
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1030),
                             Deleted = false,
                             DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Basic Website Safety",
@@ -95,7 +92,7 @@ namespace EinsteinHacking.Data.Migrations
                         new
                         {
                             ChallengeID = 4,
-                            CreatedAt = new DateTime(2021, 6, 13, 18, 51, 22, 430, DateTimeKind.Local).AddTicks(1560),
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1030),
                             Deleted = false,
                             DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Cookies",
@@ -106,7 +103,7 @@ namespace EinsteinHacking.Data.Migrations
                         new
                         {
                             ChallengeID = 5,
-                            CreatedAt = new DateTime(2021, 6, 13, 18, 51, 22, 430, DateTimeKind.Local).AddTicks(1570),
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1040),
                             Deleted = false,
                             DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Try every combination there is (The password is a combination of 8 lowercase letter in the english alphabet)",
@@ -117,7 +114,7 @@ namespace EinsteinHacking.Data.Migrations
                         new
                         {
                             ChallengeID = 6,
-                            CreatedAt = new DateTime(2021, 6, 13, 18, 51, 22, 430, DateTimeKind.Local).AddTicks(1570),
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1040),
                             Deleted = false,
                             DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Social Engineering",
@@ -128,7 +125,7 @@ namespace EinsteinHacking.Data.Migrations
                         new
                         {
                             ChallengeID = 7,
-                            CreatedAt = new DateTime(2021, 6, 13, 18, 51, 22, 430, DateTimeKind.Local).AddTicks(1570),
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1040),
                             Deleted = false,
                             DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "SQL ",
@@ -139,7 +136,7 @@ namespace EinsteinHacking.Data.Migrations
                         new
                         {
                             ChallengeID = 8,
-                            CreatedAt = new DateTime(2021, 6, 13, 18, 51, 22, 430, DateTimeKind.Local).AddTicks(1570),
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1040),
                             Deleted = false,
                             DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Encryption",
@@ -150,7 +147,7 @@ namespace EinsteinHacking.Data.Migrations
                         new
                         {
                             ChallengeID = 9,
-                            CreatedAt = new DateTime(2021, 6, 13, 18, 51, 22, 430, DateTimeKind.Local).AddTicks(1580),
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1050),
                             Deleted = false,
                             DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Steganografie",
@@ -161,7 +158,7 @@ namespace EinsteinHacking.Data.Migrations
                         new
                         {
                             ChallengeID = 10,
-                            CreatedAt = new DateTime(2021, 6, 13, 18, 51, 22, 430, DateTimeKind.Local).AddTicks(1580),
+                            CreatedAt = new DateTime(2021, 6, 6, 17, 6, 37, 112, DateTimeKind.Local).AddTicks(1050),
                             Deleted = false,
                             DeletedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Certificate fun",

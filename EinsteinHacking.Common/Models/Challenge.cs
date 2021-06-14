@@ -18,7 +18,6 @@ namespace EinsteinHacking.Models
         public int PointsOnCompletion { get; set; }
         public int PointsRemovedPerHintUsed { get; set; }
         public string LinkToexplanationVideo { get; set; }
-        public string Solution { get; set; }
         public List<Hint> Hints { get; set; }
 
         public bool IsValid =>  !String.IsNullOrEmpty(Name)
