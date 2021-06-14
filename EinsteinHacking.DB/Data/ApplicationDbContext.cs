@@ -111,7 +111,7 @@ namespace EinsteinHacking.Data
                 CreatedAt = DateTime.Now,
             };
 
-
+            
             base.OnModelCreating(builder);
             //builder.Entity<Challenge>()
             //    .HasData(
