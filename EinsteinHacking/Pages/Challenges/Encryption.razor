@@ -130,8 +130,7 @@
 
     private void onSubmit()
     {
-        // todo: compare with saved password of challenge -> not implemented yet
-        if (inputValue == "123")
+        if (inputValue == challenge.Solution)
         {
             AlertState.SetAlert("true");
             UserChallengeLogic.UserCompleteChallenge(username, id);
