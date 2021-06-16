@@ -1,0 +1,67 @@
+﻿@inject NavigationManager Navigate
+@inject AuthenticationStateProvider auth
+@inject EinsteinHacking.Services.AlertState AlertState
+@inject EinsteinHacking.Logic.ChallengeLogic ChallengeLogic
+@inject EinsteinHacking.Logic.HintLogic HintLogic
+@inject EinsteinHacking.Logic.UserChallengeLogic UserChallengeLogic
+
+
+
+<table>
+    <tr>
+        <td><h2>Hints: </h2></td>
+        <td style="text-align:left">
+            @if (UserCanUseHint && !UserClickedHint)
+            {
+                <button class="btn btn-outline-success btn-sm" @onclick="UseHint">Use</button>
+            }
+        </td>
+    </tr>
+</table>
+@foreach (EinsteinHacking.Models.Hint h in hints)
+{
+    <div class="card">
+        <div class="card-body">
+            @if (h.IsOpened)
+            {
+                <p>@h.Name</p>
+                <p>@h.Description</p>
+            }
+            else
+            {
+                <p>Hidden</p>
+            }
+        </div>
+    </div>
+}
+
+
+
+
+@code {
+    [Parameter]
+    public int challengeID { get; set; }
+    private string username { get; set; }
+    private List<EinsteinHacking.Models.Hint> hints { get; set; }
+    private bool UserCanUseHint = false;
+    private bool UserClickedHint = false;
+
+    protected override void OnInitialized()
+    {
+        username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
+        hints = UserChallengeLogic.GetHintsFromChallengeFromUser(username, challengeID);
+        UserCanUseHint = UserChallengeLogic.UserCanUseHint(username, challengeID);
+    }
+
+    private void UseHint()
+    {
+        if (!UserClickedHint)
+        {
+            UserCanUseHint = true;
+            UserChallengeLogic.UserGetHint(username, challengeID);
+            hints = UserChallengeLogic.GetHintsFromChallengeFromUser(username, challengeID);
+            UserCanUseHint = UserChallengeLogic.UserCanUseHint(username, challengeID);
+            UserClickedHint = false;
+        }
+    }
+}

@@ -129,6 +129,28 @@ namespace EinsteinHacking.Logic
             return false;
         }
 
+        /// <summary>
+        /// Gives you a list of the hints that the challenge has
+        /// IsOpened is filled on the hints to signalise which hints the user already used.
+        /// User a new Hint with UserGetHint
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="challengeID"></param>
+        /// <returns></returns>
+        public List<Hint> GetHintsFromChallengeFromUser(string username, int challengeID)
+        {
+            var hints = new HintLogic(_context).GetHintsFromChallenge(challengeID).OrderBy(n => n.HintID).ToList();
+            var userProgress = GetUserProgress(username.ToUpper(), challengeID);
+
+            for (int i = 0; i < hints.Count(); i++)
+            {
+                if (i < userProgress.HintsUsed)
+                    hints[i].IsOpened = true;
+            }
+
+            return hints;
+        }
+
 
         //private methods
         private void StartUserChallenges(string username)
@@ -155,6 +177,7 @@ namespace EinsteinHacking.Logic
                 _context.SaveChanges();
             }
         }
+
 
         private void UserSetStatus(string username, int challengeID, Status status)
         {

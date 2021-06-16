@@ -12,53 +12,62 @@
 
 <EinsteinHacking.Shared.Html>
     <Content>
-        <div class="h-100">
-            <div class="card text-center">
-                <div class="card-header">
-                    Challenge
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title">@challenge.Name</h1>
-                    <h3 class="card-subtitle mb-2 text-muted">Introduction</h3>
-                    <p class="card-text">@challenge.Description</p>
-                    <br />
-                    <input @bind-value="@inputValue" disabled="@IsDisabled" class="input-group-lg" type="text" name="passwordsubmit" /> &nbsp;
-                    <button type="button" disabled="@IsDisabled" class="btn btn-primary" @onclick=onSubmit>Submit</button>
-                    <EinsteinHacking.Shared.Alert Title=@alert.AlertTitle Type=@alert.AlertType>
-                        <Content>
-                            <strong class="text-nowrap">@alert.AlertMessage</strong>
-                        </Content>
-                    </EinsteinHacking.Shared.Alert>
-                    <br />
-                    <br />
-                    @if (!status.Equals(Status.Ended))
-                    {
-                        <div class="accordion" id="HintAccordion">
-                            @foreach (Hint hint in hints)
-                            {
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="@hint.HintID">
-                                        <button disabled="@IsDisabled" @onclick="UseHint" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-@hint.HintID" aria-expanded="false" aria-controls="panelsStayOpen-@hint.HintID">
-                                            Hint # @(challenge.Hints.IndexOf(hint) + 1)
-                                        </button>
-                                    </h2>
-                                    <div id="panelsStayOpen-@hint.HintID" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-@hint.HintID">
-                                        <div class="accordion-body">
-                                            <strong>@hint.Name</strong>
-                                            <p>@hint.Description</p>
-                                        </div>
+        <div class="content">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="h-100">
+                        <div class="card text-center">
+                            <div class="card-header">
+                                Challenge
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title">@challenge.Name</h1>
+                                <h3 class="card-subtitle mb-2 text-muted">Introduction</h3>
+                                <p class="card-text">@challenge.Description</p>
+                                <br />
+                                <input @bind-value="@inputValue" disabled="@IsDisabled" class="input-group-lg" type="text" name="passwordsubmit" /> &nbsp;
+                                <button type="button" disabled="@IsDisabled" class="btn btn-primary" @onclick=onSubmit>Submit</button>
+                                <EinsteinHacking.Shared.Alert Title=@alert.AlertTitle Type=@alert.AlertType>
+                                    <Content>
+                                        <strong class="text-nowrap">@alert.AlertMessage</strong>
+                                    </Content>
+                                </EinsteinHacking.Shared.Alert>
+                                <br />
+                                <br />
+                                @if (!status.Equals(Status.Ended))
+                                {
+                                    <div class="accordion" id="HintAccordion">
+                                        @foreach (Hint hint in hints)
+                                        {
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="@hint.HintID">
+                                                    <button disabled="@IsDisabled" @onclick="UseHint" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-@hint.HintID" aria-expanded="false" aria-controls="panelsStayOpen-@hint.HintID">
+                                                        Hint # @(challenge.Hints.IndexOf(hint) + 1)
+                                                    </button>
+                                                </h2>
+                                                <div id="panelsStayOpen-@hint.HintID" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-@hint.HintID">
+                                                    <div class="accordion-body">
+                                                        <strong>@hint.Name</strong>
+                                                        <p>@hint.Description</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
                                     </div>
-                                </div>
-                            }
+                                }
+                                else
+                                {
+                                    <br />
+                                    <button type="button" class="btn btn-dark" @onclick="NextChallenge">
+                                        <span class="oi oi-arrow-circle-right" aria-hidden="true"></span> Next Challenge
+                                    </button>
+                                }
+                            </div>
                         </div>
-                    }
-                    else
-                    {
-                        <br />
-                        <button type="button" class="btn btn-dark" @onclick="NextChallenge">
-                            <span class="oi oi-arrow-circle-right" aria-hidden="true"></span> Next Challenge
-                        </button>
-                    }
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <EinsteinHacking.Pages.Components.HintView challengeID="@challenge.ChallengeID"/>
                 </div>
             </div>
         </div>
