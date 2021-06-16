@@ -28,7 +28,7 @@ namespace EinsteinHacking.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("info@einsteinhacking.ch", "EinsteinHacking"),
+                From = new EmailAddress("noreplay.einsteinhacking@gmail.com", "EinsteinHacking"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
