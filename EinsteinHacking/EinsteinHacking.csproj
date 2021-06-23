@@ -30,6 +30,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\Tempelate\" />
-    <Folder Include="Pages\Components\" />
   </ItemGroup>
 </Project>
