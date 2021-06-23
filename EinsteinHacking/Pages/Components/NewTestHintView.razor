@@ -1,0 +1,63 @@
+﻿@inject NavigationManager Navigate
+@inject AuthenticationStateProvider auth
+@inject EinsteinHacking.Services.AlertState AlertState
+@inject EinsteinHacking.Logic.ChallengeLogic ChallengeLogic
+@inject EinsteinHacking.Logic.HintLogic HintLogic
+@inject EinsteinHacking.Logic.UserChallengeLogic UserChallengeLogic
+@using EinsteinHacking.Models
+
+
+<div class="accordion" id="HintAccordion">
+    @foreach (Hint hint in hints)
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="@hint.HintID">
+                <button disabled="@(!hint.IsOpened)" @onclick="UseHint" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-@hint.HintID" aria-expanded="false" aria-controls="panelsStayOpen-@hint.HintID">
+                    Hint #@(hints.IndexOf(hint) + 1) 
+                </button>
+            </h2>
+            <div id="panelsStayOpen-@hint.HintID" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-@hint.HintID">
+                <div class="accordion-body">
+                    <strong>@hint.Name</strong>
+                    @((MarkupString)hint.Description)
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int challengeID { get; set; }
+    private string username { get; set; }
+    private List<EinsteinHacking.Models.Hint> hints { get; set; }
+    private bool UserCanUseHint = false;
+    private bool UserClickedHint = false;
+
+    protected override void OnInitialized()
+    {
+        username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
+        hints = UserChallengeLogic.GetHintsFromChallengeFromUser(username, challengeID);
+        if (!hints.Count.Equals(0))
+        {
+            hints[0].IsOpened = true;
+        }
+        UserCanUseHint = UserChallengeLogic.UserCanUseHint(username, challengeID);
+    }
+
+    private void UseHint()
+    {
+        if (!UserClickedHint)
+        {
+            if (hints[0].IsOpened)
+            {
+                UserChallengeLogic.UserGetHint(username, challengeID);
+            }
+            UserCanUseHint = true;
+            UserChallengeLogic.UserGetHint(username, challengeID);
+            hints = UserChallengeLogic.GetHintsFromChallengeFromUser(username, challengeID);
+            UserCanUseHint = UserChallengeLogic.UserCanUseHint(username, challengeID);
+            UserClickedHint = false;
+        }
+    }
+}

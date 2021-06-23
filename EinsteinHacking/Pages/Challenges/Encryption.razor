@@ -1,41 +1,20 @@
 ﻿@page "/Challenge8/{id:int}"
 
-@using EinsteinHacking.Models
-
 @inject AuthenticationStateProvider auth
-@inject EinsteinHacking.Logic.UserChallengeLogic UserChallengeLogic
 
 <EinsteinHacking.Shared.Html>
     <Content>
-        @if (status.Equals(Status.Ended))
-        {
             <EinsteinHacking.Pages.Components.ChallengeBody id="@id" />
-        }
-        else
-        {
-            <div class="content">
-                <div class="row">
-                    <div class="col-lg-9">
-                        <EinsteinHacking.Pages.Components.ChallengeBody id="@id" />
-                    </div>
-                    <div class="col-lg-3">
-                        <EinsteinHacking.Pages.Components.HintView challengeID="@id" />
-                    </div>
-                </div>
-            </div>
-        }
     </Content>
 </EinsteinHacking.Shared.Html>
 
 @code {
     [Parameter]
     public int id { get; set; }
-    private Status status;
     private string username;
 
     protected override void OnInitialized()
     {
         username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
-        status = UserChallengeLogic.UserGetChallengeStatus(username, id);
     }
 }

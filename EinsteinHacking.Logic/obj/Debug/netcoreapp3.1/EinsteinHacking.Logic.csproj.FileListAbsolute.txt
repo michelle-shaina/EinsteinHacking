@@ -26,3 +26,17 @@ C:/Development/EinsteinHacking/EinsteinHacking.Logic/obj/Debug/netcoreapp3.1/Ein
 /Users/lucienkaser/Development/EinsteinHacking/EinsteinHacking.Logic/obj/Debug/netcoreapp3.1/EinsteinHacking.Logic.csproj.CopyComplete
 /Users/lucienkaser/Development/EinsteinHacking/EinsteinHacking.Logic/obj/Debug/netcoreapp3.1/EinsteinHacking.Logic.dll
 /Users/lucienkaser/Development/EinsteinHacking/EinsteinHacking.Logic/obj/Debug/netcoreapp3.1/EinsteinHacking.Logic.pdb
+C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Logic\bin\Debug\netcoreapp3.1\EinsteinHacking.Logic.deps.json
+C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Logic\bin\Debug\netcoreapp3.1\EinsteinHacking.Logic.dll
+C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Logic\bin\Debug\netcoreapp3.1\EinsteinHacking.Logic.pdb
+C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Logic\bin\Debug\netcoreapp3.1\EinsteinHacking.Common.dll
+C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Logic\bin\Debug\netcoreapp3.1\EinsteinHacking.DB.dll
+C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Logic\bin\Debug\netcoreapp3.1\EinsteinHacking.Common.pdb
+C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Logic\bin\Debug\netcoreapp3.1\EinsteinHacking.DB.pdb
+C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Logic\obj\Debug\netcoreapp3.1\EinsteinHacking.Logic.csprojAssemblyReference.cache
+C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Logic\obj\Debug\netcoreapp3.1\EinsteinHacking.Logic.csproj.CoreCompileInputs.cache
+C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Logic\obj\Debug\netcoreapp3.1\EinsteinHacking.Logic.AssemblyInfoInputs.cache
+C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Logic\obj\Debug\netcoreapp3.1\EinsteinHacking.Logic.AssemblyInfo.cs
+C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Logic\obj\Debug\netcoreapp3.1\EinsteinHacking.Logic.csproj.CopyComplete
+C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Logic\obj\Debug\netcoreapp3.1\EinsteinHacking.Logic.dll
+C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Logic\obj\Debug\netcoreapp3.1\EinsteinHacking.Logic.pdb
