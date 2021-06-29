@@ -48,7 +48,6 @@ body {
         &:hover {
             transition-duration: .2s;
             color: $link-hover-color;
-
         }
     }
 
@@ -82,7 +81,6 @@ body {
     }
 
     [type=button].btn {
-
         color: $bold-font-color;
 
         &.btn-primary {
