@@ -21,7 +21,7 @@
                 @challengeDescription
             </p>
             <br />
-            <input @bind-value="@inputValue" disabled="@IsDisabled" class="input-group-lg" type="text" name="passwordsubmit" /> &nbsp;
+            <input @bind-value="@inputValue" disabled="@IsDisabled" class="input-group-lg" type="password" name="passwordsubmit" /> &nbsp;
             <button type="button" disabled="@IsDisabled" class="btn btn-primary" @onclick=onSubmit>Submit</button>
             <EinsteinHacking.Shared.Alert Title=@alert.AlertTitle Type=@alert.AlertType>
                 <Content>
