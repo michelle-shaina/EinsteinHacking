@@ -1,5 +1,6 @@
 ﻿@page "/Challenge9/{id:int}"
 
+@inject NavigationManager NavManager
 @inject AuthenticationStateProvider auth
 
 <EinsteinHacking.Shared.Html>
@@ -7,6 +8,10 @@
         <EinsteinHacking.Pages.Components.ChallengeBody id="@id" />
     </Content>
 </EinsteinHacking.Shared.Html>
+<a href="/download" class="btn btn-primary btn-lg btn-block" type="button">
+    <span class="oi oi-data-transfer-download"></span>
+   Download Image
+</a>
 
 @code {
     [Parameter]
