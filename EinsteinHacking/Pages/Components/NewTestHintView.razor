@@ -4,23 +4,23 @@
 @inject EinsteinHacking.Logic.ChallengeLogic ChallengeLogic
 @inject EinsteinHacking.Logic.HintLogic HintLogic
 @inject EinsteinHacking.Logic.UserChallengeLogic UserChallengeLogic
-@using EinsteinHacking.Models
-
 
 <div class="accordion" id="HintAccordion">
-    @foreach (Hint hint in hints)
+    @foreach (HintConvertHelper hint in convertedHints)
     {
         <div class="accordion-item">
             <h2 class="accordion-header" id="@hint.HintID">
-                <button disabled="@(!hint.IsOpened)" @onclick="UseHint" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-@hint.HintID" aria-expanded="false" aria-controls="panelsStayOpen-@hint.HintID">
-                    Hint #@(hints.IndexOf(hint) + 1) 
+                <button disabled="@(!hint.IsOpened)" @onclick="@(e => UseHint(convertedHints.IndexOf(hint)))" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-@hint.HintID" aria-expanded="false" aria-controls="panelsStayOpen-@hint.HintID">
+                    Hint #@(convertedHints.IndexOf(hint) + 1) 
                 </button>
             </h2>
             <div id="panelsStayOpen-@hint.HintID" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-@hint.HintID">
                 <div class="accordion-body">
-                    <strong>@hint.Name</strong>
-                    <br />
-                    @((MarkupString)hint.Description)
+                    @if (hint.ShouldShowCaption)
+                    {
+                        <strong>@hint.Name</strong>
+                        <br /> 
+                        @((MarkupString)hint.Description)}
                 </div>
             </div>
         </div>
@@ -32,8 +32,9 @@
     public int challengeID { get; set; }
     private string username { get; set; }
     private List<EinsteinHacking.Models.Hint> hints { get; set; }
-    private bool UserCanUseHint = false;
+    private List<HintConvertHelper> convertedHints = new List<HintConvertHelper>();
     private bool UserClickedHint = false;
+    private bool IsFirstHintOpened = false;
 
     protected override void OnInitialized()
     {
@@ -43,21 +44,40 @@
         {
             hints[0].IsOpened = true;
         }
-        UserCanUseHint = UserChallengeLogic.UserCanUseHint(username, challengeID);
+        ConvertHints();
     }
 
-    private void UseHint()
+    private void ConvertHints()
+    {
+        foreach (var hint in hints)
+        {
+            convertedHints.Add(new HintConvertHelper
+            {
+                HintID = hint.HintID,
+                IsOpened = hint.IsOpened,
+                Description = hint.Description,
+                Name = hint.Name,
+                ShouldShowCaption = false
+            });
+        }
+    }
+
+    private void UseHint(int HintId)
     {
         if (!UserClickedHint)
         {
+            convertedHints[HintId].ShouldShowCaption = true;
+            if (HintId < (convertedHints.Count() - 1))
+            {
+                convertedHints[HintId + 1].IsOpened = true;
+            }
+
             if (hints[0].IsOpened)
             {
                 UserChallengeLogic.UserGetHint(username, challengeID);
             }
-            UserCanUseHint = true;
+
             UserChallengeLogic.UserGetHint(username, challengeID);
-            hints = UserChallengeLogic.GetHintsFromChallengeFromUser(username, challengeID);
-            UserCanUseHint = UserChallengeLogic.UserCanUseHint(username, challengeID);
             UserClickedHint = false;
         }
     }
