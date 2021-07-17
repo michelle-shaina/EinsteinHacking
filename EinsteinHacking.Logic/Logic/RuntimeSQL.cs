@@ -23,6 +23,8 @@ namespace EinsteinHacking.Logic
         private const string ALLOWED_IN_COLUMNNAME = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ*";
         private const char NULLCHAR = '$';
 
+        private readonly string[] SQL_APPROVED_OPERATORS = new string[] { "=", ">", "<", ">=", "<=", "<>" };
+
         public RuntimeSQL(Data.ApplicationDbContext context)
         {
             this._context = context;
@@ -38,19 +40,15 @@ namespace EinsteinHacking.Logic
                 {"francessco", "das_glaubs_au_ned" },
                 {"user", "nei_das_ned" },
             };
-
         }
 
         public List<String> ExecuteQuery(string query)
         {
             //validate the select and the where -> from is tested 6 lines below
-            if (!ValidateSQLSelect(query)) { return null; }
+            if (!ValidateSQL(query)) { return null; }
 
             //split values into different parts
             var sub = SplitQueryIntoFunction(query);
-
-            //Validate that the query targets the right table
-            if (!sub[Cases.FROM].ToLower().Equals(TABLE_NAME)) { return null; }
 
             //add the selected field to the return table
             var retList = new List<String>();
@@ -73,29 +71,62 @@ namespace EinsteinHacking.Logic
 
                 retList.Add(temp);
             }
+
+            if (!String.IsNullOrEmpty(sub[Cases.WHERE]))
+            {
+                List<string> toremove = new List<string>();
+                //remove each row if they do not match our selection
+                foreach (string row in retList)
+                {
+                    var username = row.Split(' ')[0];
+                    var password = row.Split(' ')[1];
+
+                    var conditions = sub[Cases.WHERE].Split(" and ");
+                    foreach (var condition in conditions)
+                    {
+                        string con = RemapSQLWhere(condition);
+                        string[] c = con.Split(' ');
+                        var target = c[0].ToLower().Equals(COLUMN_NAME_USERNAME)
+                            ? username : c[0].ToLower().Equals(COLUMN_NAME_PASSWORD) ? password : "";
+                        switch (c[1])
+                        {
+                            case "=":
+                                if (!(target.Equals(c[2]))) { toremove.Add(row); }
+                                break;
+                            case "<>":
+                                if (target.Equals(c[2])) { toremove.Add(row); }
+                                break;
+                            default: throw new Exception("We should not be here");
+                        }
+                    }
+                }
+
+                //remove all not matching objects
+                foreach(var n in toremove)
+                    retList.Remove(n);
+            }
+
             return retList;
         }
-        private bool ValidateSQL(string select, string from, string where)
-        {
-            //if select, from, and where are good, we return true
-            return ValidateSQLSelect(select) && ValidateSQLFrom(from) && ValidateSQLWhere(where);
-        }
-        private bool ValidateSQLSelect(string query)
+        private bool ValidateSQL(string query)
         {
             var statements = SplitQueryIntoFunction(query);
-
-            //return false if select or from is null
-            if (String.IsNullOrEmpty(statements[Cases.SELECT]) || string.IsNullOrEmpty(statements[Cases.FROM])) { return false; }
-
+            //if select, from, and where are good, we return true
+            return ValidateSQLSelect(statements[Cases.SELECT])
+                && ValidateSQLFrom(statements[Cases.FROM])
+                && ValidateSQLWhere(statements[Cases.WHERE]);
+        }
+        private bool ValidateSQLSelect(string select)
+        {
             //Validate SELECT
             //if empty then something is wrong
-            if (statements[Cases.SELECT].Replace(" ", "").Length == 0) { return false; }
+            if (select.Replace(" ", "").Length == 0) { return false; }
             //if we end on ',' or ', ' then something is wrong
-            if (statements[Cases.SELECT].Replace(" ", "")[statements[Cases.SELECT].Replace(" ", "").Length - 1].Equals(',')) { return false; }
+            if (select.Replace(" ", "")[^1].Equals(',')) { return false; }
             ///Expected syntax is column, column, column
             char expectedChar = NULLCHAR;
             //Checking if the sql fits the syntax
-            foreach (char c in statements[Cases.SELECT])
+            foreach (char c in select)
             {
                 //checking if the char is what we expect
                 if (!expectedChar.Equals(NULLCHAR) && !c.Equals(expectedChar))
@@ -107,7 +138,7 @@ namespace EinsteinHacking.Logic
             //if we expect something then false
             if (!expectedChar.Equals(NULLCHAR)) { return false; }
             //Validate that we only target the columns and password
-            var filteredString = statements[Cases.SELECT].Replace(",", "");
+            var filteredString = select.Replace(",", "");
             foreach (var word in filteredString.Split(' '))
                 if (!(word.ToLower().Equals(COLUMN_NAME_USERNAME)
                     || word.ToLower().Equals(COLUMN_NAME_PASSWORD)
@@ -123,16 +154,40 @@ namespace EinsteinHacking.Logic
         }
         private bool ValidateSQLWhere(string query)
         {
-            //TODO ValidateSQLWhere
+            if (String.IsNullOrEmpty(query)) { return true; }
+            
+
+            //remove the word from
+            query = query.ToLower().Replace("from", "");
+            query = RemapSQLWhere(query);
+
+            //split into each selection (blablabla = shit)
+            string[] selections = query.Split(" or ");
+            //check each of them
+            foreach (string selection in selections)
+            {
+                var words = selection.Split(" ");
+                //if they do not follow the blablabla = shit format it not correct
+                if (!(words.Length == 3)) { return false; }
+
+                //test if the first of the three words is a column either username or password
+                if (!(words[0].Equals(COLUMN_NAME_USERNAME) || words.Equals(COLUMN_NAME_PASSWORD))) { return false; }
+
+                //check if the second word is a sql operation
+                if (!SQL_APPROVED_OPERATORS.ToList().Any(n => n.ToLower().Equals(words[1].ToLower()))) { return false; }
+            }
             return true;
         }
+
         private Dictionary<Cases, String> SplitQueryIntoFunction(string query)
         {
-            var ret = new Dictionary<Cases, String>();
-            ret.Add(Cases.SELECT, "");
-            ret.Add(Cases.FROM, "");
-            ret.Add(Cases.WHERE, "");
-            ret.Add(Cases.NULL, "");
+            var ret = new Dictionary<Cases, String>
+            {
+                { Cases.SELECT, "" },
+                { Cases.FROM, "" },
+                { Cases.WHERE, "" },
+                { Cases.NULL, "" }
+            };
 
             //adding the required parts of the Query (select / from / where)
             Cases current = Cases.NULL;
@@ -147,6 +202,15 @@ namespace EinsteinHacking.Logic
 
             ret.Remove(Cases.NULL);
             return ret;
+        }
+        private string RemapSQLWhere(string where)
+        {
+            return where.Replace("<>", " <> ")
+                        .Replace("<=", " <= ")
+                        .Replace(">=", " >= ")
+                        .Replace("<", " < ")
+                        .Replace(">", " > ")
+                        .Replace("=", " = ");
         }
     }
     public enum Cases
