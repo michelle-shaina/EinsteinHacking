@@ -6,6 +6,7 @@
 /*** Page header ***/
 /*** Forms ***/
 /*** Spacing-System ***/
+/*** challenges color ***/
 @font-face {
   font-family: fira;
   src: url(https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap); }
@@ -14,6 +15,7 @@
 /*** Page header ***/
 /*** Forms ***/
 /*** Spacing-System ***/
+/*** challenges color ***/
 body {
   background-color: #22212c;
   font-family: "fira", monospace, sans-serif;
@@ -110,5 +112,35 @@ input.form-control {
 
 footer {
   border-top: 1px solid #8a8f98; }
+
+.challenge-1 {
+  color: #d0ffcc !important; }
+
+.challenge-2 {
+  color: #8aff80 !important; }
+
+.challenge-3 {
+  color: #ccfff6 !important; }
+
+.challenge-4 {
+  color: #80ffea !important; }
+
+.challenge-5 {
+  color: #ffcce6 !important; }
+
+.challenge-6 {
+  color: #ff80bf !important; }
+
+.challenge-7 {
+  color: #ffd5cc !important; }
+
+.challenge-8 {
+  color: #ff9580 !important; }
+
+.challenge-9 {
+  color: #d5ccff !important; }
+
+.challenge-10 {
+  color: #9580ff !important; }
 
 /*# sourceMappingURL=includes.css.map */
