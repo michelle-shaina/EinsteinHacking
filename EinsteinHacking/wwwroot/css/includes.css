@@ -19,6 +19,16 @@ body {
   font-family: "fira", monospace, sans-serif;
   color: #8a8f98; }
 
+.sidebar .navbar {
+  width: 270px; }
+.sidebar .logo {
+  position: relative; }
+  .sidebar .logo .logo-image {
+    width: 50px;
+    float: left; }
+  .sidebar .logo .navbar-brand {
+    float: left; }
+
 .main .top-row {
   background-color: #282a36;
   box-shadow: 0 0 10px -10px rgba(0, 0, 0, 0.15);
@@ -31,7 +41,7 @@ body {
   color: #8a8f98;
   margin-bottom: 20px;
   transition-duration: .5s; }
-  .main .card:hover {
+  .main .cardshadow:hover {
     transform: translate(4px, -4px);
     transition-duration: .5s;
     box-shadow: -8px 8px 0 #5922e5; }
