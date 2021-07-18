@@ -29,6 +29,16 @@ body {
   .sidebar .logo .navbar-brand {
     float: left; }
 
+header {
+  background-color: #282a36; }
+  header .logo {
+    position: relative; }
+    header .logo .logo-image {
+      width: 50px;
+      float: left; }
+    header .logo .navbar-brand {
+      float: left; }
+
 .main .top-row {
   background-color: #282a36;
   box-shadow: 0 0 10px -10px rgba(0, 0, 0, 0.15);

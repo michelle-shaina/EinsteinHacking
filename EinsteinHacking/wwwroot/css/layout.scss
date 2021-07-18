@@ -25,6 +25,20 @@ body {
     }
 }
 
+header {
+    background-color: $page-header-color;
+    .logo {
+        position: relative;
+        .logo-image {
+            width: 50px;
+            float: left;
+        }
+        .navbar-brand {
+            float: left;
+        }
+    }
+}
+
 .main {
     .top-row {
         background-color: $page-header-color;
@@ -148,7 +162,7 @@ body {
     }
 }
 
-.sidebar {
+.sidebar  {
     .top-row {
         background-color: $page-header-color;
     }
