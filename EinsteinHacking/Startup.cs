@@ -55,6 +55,7 @@ namespace EinsteinHacking
             services.AddScoped<HintLogic>();
             services.AddScoped<UserChallengeLogic>();
             services.AddScoped<UserStatisticLogic>();
+            services.AddScoped<RuntimeSQL>();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
         }
 
