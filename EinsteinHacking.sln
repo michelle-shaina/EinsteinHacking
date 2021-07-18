@@ -7,9 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EinsteinHacking", "Einstein
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EinsteinHacking.DB", "EinsteinHacking.DB\EinsteinHacking.DB.csproj", "{8078F806-A57E-453C-B58A-494B56F7E595}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EinsteinHacking.Logic", "EinsteinHacking.Logic\EinsteinHacking.Logic.csproj", "{B3E714A7-B0BE-426D-B700-070ECB662B02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EinsteinHacking.Logic", "EinsteinHacking.Logic\EinsteinHacking.Logic.csproj", "{B3E714A7-B0BE-426D-B700-070ECB662B02}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EinsteinHacking.Common", "EinsteinHacking.Common\EinsteinHacking.Common.csproj", "{5D3F3652-9436-4420-978C-814C4C3BD9AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{570ADEC2-0109-4B61-87A6-10B2ADD88174}"
+	ProjectSection(SolutionItems) = preProject
+		EinsteinHacking.sln = EinsteinHacking.sln
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
