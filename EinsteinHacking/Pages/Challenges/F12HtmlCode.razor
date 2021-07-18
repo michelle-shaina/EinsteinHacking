@@ -5,11 +5,11 @@
 <EinsteinHacking.Shared.Html>
     <Content>
         <EinsteinHacking.Pages.Components.ChallengeBody id="@id" />
-        <p style="visibility: hidden">this is not visible</p>
+        <!-- <!-- Passwort: BehindTheScenes! -->
     </Content>
 </EinsteinHacking.Shared.Html>
 
-@code {
+@code { 
     [Parameter]
     public int id { get; set; }
     private string username;
@@ -17,5 +17,5 @@
     protected override void OnInitialized()
     {
         username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
-    }
+    } 
 }
