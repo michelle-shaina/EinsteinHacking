@@ -1,5 +1,11 @@
-﻿<AuthorizeView>
+﻿@inject AuthenticationStateProvider auth
+@inject EinsteinHacking.Logic.ChallengeLogic ChallengeLogic
+@inject EinsteinHacking.Logic.UserStatisticLogic StatisitcLogic
+
+
+<AuthorizeView>
     <Authorized>
+        <a @onclick="RefreshScore" href="#">Your Score: @score</a>
         <a href="Identity/Account/Manage">Hello, @context.User.Identity.Name!</a>
         <form method="post" action="Identity/Account/LogOut">
             <button type="submit" class="nav-link btn btn-link">Log out</button>
@@ -10,3 +16,21 @@
         <a href="Identity/Account/Login">Log in</a>
     </NotAuthorized>
 </AuthorizeView>
+
+
+
+@code {
+    private int score { get; set; }
+    private string username;
+
+    protected override void OnInitialized()
+    {
+        username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
+        RefreshScore();
+    }
+
+    private void RefreshScore()
+    {
+        score = StatisitcLogic.GetUserScore(username);
+    }
+}

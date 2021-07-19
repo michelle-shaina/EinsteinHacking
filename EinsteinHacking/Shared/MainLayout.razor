@@ -10,7 +10,7 @@
 <div class="main">
 
     <div class="top-row px-4 auth">
-        <a @onclick="RefreshScore" href="#">Your Score: @score</a>
+        
         <LoginDisplay />
         @*<a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>*@
     </div>
@@ -22,19 +22,4 @@
 
 
 
-@code {
-    private int score { get; set; }
-    private string username;
-
-    protected override void OnInitialized()
-    {
-        username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
-        RefreshScore();
-    }
-
-    private void RefreshScore()
-    {
-        score = StatisitcLogic.GetUserScore(username);
-    }
-}
 
