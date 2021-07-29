@@ -7,6 +7,38 @@ body {
 }
 
 
+.sidebar {
+
+    .navbar {
+        width: 270px;
+    }
+
+    .logo {
+        position: relative;
+        .logo-image {
+            width: 50px;
+            float: left;
+        }
+        .navbar-brand {
+            float: left;
+        }
+    }
+}
+
+header {
+    background-color: $page-header-color;
+    .logo {
+        position: relative;
+        .logo-image {
+            width: 50px;
+            float: left;
+        }
+        .navbar-brand {
+            float: left;
+        }
+    }
+}
+
 .main {
     .top-row {
         background-color: $page-header-color;
@@ -25,7 +57,7 @@ body {
         margin-bottom: $spacing-s;
         transition-duration: .5s;
 
-        &:hover {
+        &shadow:hover {
             transform: translate(4px, -4px);
             transition-duration: .5s;
             box-shadow: -8px 8px 0 $blue-border-color;
@@ -128,7 +160,7 @@ body {
     }
 }
 
-.sidebar {
+.sidebar  {
     .top-row {
         background-color: $page-header-color;
     }

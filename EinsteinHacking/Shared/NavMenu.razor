@@ -1,8 +1,10 @@
+
 ﻿@using EinsteinHacking.Models
 @inject AuthenticationStateProvider auth
 @inject EinsteinHacking.Logic.ChallengeLogic ChallengeLogic
 
-<div class="top-row pl-4 navbar navbar-dark">
+﻿<div class="top-row pl-4 logo navbar navbar-dark">
+    <img class="d-block logo-image" src="../assets/images/Logo/EinsteinHackingLogo.svg" alt="Logo Einsteinhacking">
     <a class="navbar-brand" href="">EinsteinHacking</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
