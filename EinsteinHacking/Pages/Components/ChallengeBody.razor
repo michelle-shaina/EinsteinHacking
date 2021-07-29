@@ -8,6 +8,8 @@
 @inject EinsteinHacking.Logic.ChallengeLogic ChallengeLogic
 @inject EinsteinHacking.Logic.HintLogic HintLogic
 @inject EinsteinHacking.Logic.UserChallengeLogic UserChallengeLogic
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContext
+
 
 <div class="h-100">
     <div class="card text-center">
@@ -32,21 +34,18 @@
             <br />
             @if (status.Equals(Status.Ended))
             {
-                <br />
+<br />
                 <button type="button" class="btn btn-dark" @onclick="NextChallenge">
                     <span class="oi oi-arrow-circle-right" aria-hidden="true"></span> Next Challenge
-                </button>
-            }
+                </button> }
             else
             {
-                <EinsteinHacking.Pages.Components.NewTestHintView challengeID="@id" />
-            }
+<EinsteinHacking.Pages.Components.NewTestHintView challengeID="@id" />}
         </div>
     </div>
 </div>
 
-@code {
-    [Parameter]
+@code { [Parameter]
     public int id { get; set; }
     protected bool IsDisabled { get; set; }
     public MarkupString challengeDescription { get; set; }
@@ -88,20 +87,34 @@
 
     private void onSubmit()
     {
+        if (id == 4)
+        {
+            var cook = HttpContext.HttpContext.Request.Cookies["EinsteinHackingCookie"];
+            challenge.Solution = cook.ToString();
+        }
         if (inputValue == challenge.Solution)
         {
-            AlertState.SetAlert("true");
-            UserChallengeLogic.UserCompleteChallenge(username, id);
-            status = UserChallengeLogic.UserGetChallengeStatus(username, id);
+            ChallengeSuccess();
         }
         else
         {
-            AlertState.SetAlert("false");
+            ChallengeFailure();
         }
+    }
+
+    private void ChallengeSuccess()
+    {
+        AlertState.SetAlert("true");
+        UserChallengeLogic.UserCompleteChallenge(username, id);
+        status = UserChallengeLogic.UserGetChallengeStatus(username, id);
+    }
+
+    private void ChallengeFailure()
+    {
+        AlertState.SetAlert("false");
     }
 
     private void NextChallenge()
     {
-        Navigate.NavigateTo($"/Challenge2/{id+1}");
-    }
-}
+        Navigate.NavigateTo($"/Challenge2/{id + 1}");
+    } }

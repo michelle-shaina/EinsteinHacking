@@ -1,6 +1,8 @@
 ﻿@page "/Challenge4/{id:int}"
 
 @inject AuthenticationStateProvider auth
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContext
 
 <EinsteinHacking.Shared.Html>
     <Content>
@@ -8,13 +10,18 @@
     </Content>
 </EinsteinHacking.Shared.Html>
 
-@code {
-    [Parameter]
+@code { [Parameter]
     public int id { get; set; }
     private string username;
+    private string cookie;
 
     protected override void OnInitialized()
     {
         username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
+        cookie = HttpContext.HttpContext.Request.Cookies["EinsteinHackingCookie"];
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await localStorage.SetItemAsync("EinsteinHackingCookie", cookie);
     }
 }
