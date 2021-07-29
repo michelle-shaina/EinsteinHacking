@@ -1,0 +1,84 @@
+﻿@inject NavigationManager Navigate
+@inject AuthenticationStateProvider auth
+@inject EinsteinHacking.Services.AlertState AlertState
+@inject EinsteinHacking.Logic.ChallengeLogic ChallengeLogic
+@inject EinsteinHacking.Logic.HintLogic HintLogic
+@inject EinsteinHacking.Logic.UserChallengeLogic UserChallengeLogic
+
+<div class="accordion" id="HintAccordion">
+    @foreach (HintConvertHelper hint in convertedHints)
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="@hint.HintID">
+                <button disabled="@(!hint.IsOpened)" @onclick="@(e => UseHint(convertedHints.IndexOf(hint)))" class="accordion-button btn btn-info collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-@hint.HintID" aria-expanded="false" aria-controls="panelsStayOpen-@hint.HintID">
+                    Hint #@(convertedHints.IndexOf(hint) + 1) 
+                </button>
+            </h2>
+            <div id="panelsStayOpen-@hint.HintID" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-@hint.HintID">
+                <div class="accordion-body">
+                    @if (hint.ShouldShowCaption)
+                    {
+                        <strong>@hint.Name</strong>
+                        <br /> 
+                        @((MarkupString)hint.Description)}
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int challengeID { get; set; }
+    private string username { get; set; }
+    private List<EinsteinHacking.Models.Hint> hints { get; set; }
+    private List<HintConvertHelper> convertedHints = new List<HintConvertHelper>();
+    private bool UserClickedHint = false;
+    private bool IsFirstHintOpened = false;
+
+    protected override void OnInitialized()
+    {
+        username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
+        hints = UserChallengeLogic.GetHintsFromChallengeFromUser(username, challengeID);
+        if (!hints.Count.Equals(0))
+        {
+            hints[0].IsOpened = true;
+        }
+        ConvertHints();
+    }
+
+    private void ConvertHints()
+    {
+        foreach (var hint in hints)
+        {
+            convertedHints.Add(new HintConvertHelper
+            {
+                HintID = hint.HintID,
+                IsOpened = hint.IsOpened,
+                Description = hint.Description,
+                Name = hint.Name,
+                ShouldShowCaption = false
+            });
+        }
+    }
+
+    private void UseHint(int HintId)
+    {
+        if (!UserClickedHint)
+        {
+            convertedHints[HintId].ShouldShowCaption = true;
+            if (HintId < (convertedHints.Count() - 1))
+            {
+                convertedHints[HintId + 1].IsOpened = true;
+            }
+
+            if (hints[0].IsOpened)
+            {
+                UserChallengeLogic.UserGetHint(username, challengeID);
+            }
+
+            UserChallengeLogic.UserGetHint(username, challengeID);
+            UserClickedHint = false;
+        }
+    }
+}

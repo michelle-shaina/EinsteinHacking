@@ -1,16 +1,40 @@
 ﻿@inherits LayoutComponentBase
+@inject AuthenticationStateProvider auth
+@inject EinsteinHacking.Logic.ChallengeLogic ChallengeLogic
+@inject EinsteinHacking.Logic.UserStatisticLogic StatisitcLogic
 
 <div class="sidebar">
     <NavMenu />
 </div>
 
 <div class="main">
+
     <div class="top-row px-4 auth">
+        <a @onclick="RefreshScore" href="#">Your Score: @score</a>
         <LoginDisplay />
-        <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        @*<a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>*@
     </div>
 
     <div class="content px-4">
         @Body
     </div>
 </div>
+
+
+
+@code {
+    private int score { get; set; }
+    private string username;
+
+    protected override void OnInitialized()
+    {
+        username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
+        RefreshScore();
+    }
+
+    private void RefreshScore()
+    {
+        score = StatisitcLogic.GetUserScore(username);
+    }
+}
+

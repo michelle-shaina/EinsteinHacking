@@ -1,0 +1,198 @@
+﻿@page "/Challenge1/{id:int}"
+
+@using EinsteinHacking.Models
+@using EinsteinHacking.Services
+
+@inject MarkdownRendererReturner MarkdownReturner
+@inject NavigationManager Navigate
+@inject AuthenticationStateProvider auth
+@inject EinsteinHacking.Services.AlertState AlertState
+@inject EinsteinHacking.Logic.ChallengeLogic ChallengeLogic
+@inject EinsteinHacking.Logic.HintLogic HintLogic
+@inject EinsteinHacking.Logic.UserChallengeLogic UserChallengeLogic
+
+    <div class="h-100">
+        <div class="card text-center">
+            <div class="card-header">
+                Challenge
+            </div>
+            <div class="card-body">
+                <h1 class="card-title">@challenge.Name</h1>
+                <h3 class="card-subtitle mb-2 text-muted">Introduction</h3>
+                <p class="card-text">
+                    @challengeDescription
+                </p>
+                <br />
+                <input @bind-value="@inputValue" disabled="@IsDisabled" class="input-group-lg" type="password" name="passwordsubmit" /> &nbsp;
+                <button type="button" disabled="@IsDisabled" class="btn btn-primary" @onclick=onSubmit>Submit</button>
+                <EinsteinHacking.Shared.Alert Title=@alert.AlertTitle Type=@alert.AlertType>
+                    <Content>
+                        <strong class="text-nowrap">@alert.AlertMessage</strong>
+                    </Content>
+                </EinsteinHacking.Shared.Alert>
+                @if (!status.Equals(Status.Ended))
+                {
+                    <fieldset disabled="@IsDiabledNumberPanel">
+                        <div class="NumberPanelButtons">
+                            <div class="container">
+                                <div class="row justify-content-md-center">
+                                    <div class="btn-group btn-group-toggle">
+                                        <label class="btn btn-dark btn-lg">
+                                            <input @onclick="() => labelClick(1)" type="radio" id="1" autocomplete="off" /> 1
+                                        </label>
+                                        <label class="btn btn-dark btn-lg">
+                                            <input @onclick="() => labelClick(2)" type="radio" id="1" autocomplete="off" /> 2
+                                        </label>
+                                        <label class="btn btn-dark btn-lg">
+                                            <input @onclick="() => labelClick(3)" type="radio" id="1" autocomplete="off" /> 3
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-md-center">
+                                    <div class="btn-group btn-group-toggle">
+                                        <label class="btn btn-dark btn-lg">
+                                            <input @onclick="() => labelClick(4)" type="radio" id="1" autocomplete="off" /> 4
+                                        </label>
+                                        <label class="btn btn-dark btn-lg">
+                                            <input @onclick="() => labelClick(5)" type="radio" id="1" autocomplete="off" /> 5
+                                        </label>
+                                        <label class="btn btn-dark btn-lg">
+                                            <input @onclick="() => labelClick(6)" type="radio" id="1" autocomplete="off" /> 6
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-md-center">
+                                    <div class="btn-group btn-group-toggle">
+                                        <label class="btn btn-dark btn-lg">
+                                            <input @onclick="() => labelClick(7)" type="radio" id="1" autocomplete="off" /> 7
+                                        </label>
+                                        <label class="btn btn-dark btn-lg">
+                                            <input @onclick="() => labelClick(8)" type="radio" id="1" autocomplete="off" /> 8
+                                        </label>
+                                        <label class="btn btn-dark btn-lg">
+                                            <input @onclick="() => labelClick(9)" type="radio" id="1" autocomplete="off" /> 9
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-md-center">
+                                    <div class="btn-group btn-group-toggle">
+                                        <label class="btn btn-dark btn-lg">
+                                            <input @onclick="() => labelClick(0)" type="radio" id="1" autocomplete="off" /> 0
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </fieldset>
+                    <div class="row justify-content-md-center">
+                        <p>@inputValue</p>
+                    </div>
+                    <div class="row justify-content-md-center">
+                        <button type="button" class="btn btn-dark" @onclick="() => ResetNumbers()">Reset</button>
+                    </div>
+                }
+                <br />
+                <br />
+                @if (status.Equals(Status.Ended))
+                {
+                    <br />
+                    <button type="button" class="btn btn-dark" @onclick="NextChallenge">
+                        <span class="oi oi-arrow-circle-right" aria-hidden="true"></span> Next Challenge
+                    </button>
+                }
+                else
+                {
+                    <EinsteinHacking.Pages.Components.NewTestHintView challengeID="@id" />
+                }
+            </div>
+        </div>
+    </div>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    [Parameter]
+    public bool IsDiabledNumberPanel
+    {
+        get => _IsDisabled;
+        set
+        {
+            _IsDisabled = numbers.Count() == 4 ? true : false;
+        }
+    }
+    public MarkupString challengeDescription { get; set; }
+    public AlertModel alert { get; set; }
+    protected bool IsDisabled { get; set; }
+    private IEnumerable<Hint> hints;
+    private Challenge challenge;
+    private Status status;
+    private string inputValue;
+    private bool canUserUseHint;
+    private string username;
+    private bool _IsDisabled;
+    private List<int> numbers = new List<int>();
+
+    protected override void OnInitialized()
+    {
+        username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
+        status = UserChallengeLogic.UserGetChallengeStatus(username, id);
+        switch (status)
+        {
+            case Status.UnTouched:
+                UserChallengeLogic.UserStartChallenge(username, id);
+                goto case Status.InProgress;
+            case Status.InProgress:
+                AlertState.SetAlert("neutral");
+                challenge = ChallengeLogic.GetChallengeFull(id);
+                canUserUseHint = UserChallengeLogic.UserCanUseHint(username, id);
+                hints = challenge.Hints;
+                break;
+            case Status.Ended:
+                AlertState.SetAlert("completed");
+                IsDisabled = true;
+                challenge = ChallengeLogic.GetChallengeLight(id);
+                break;
+            default:
+                break;
+        }
+        challengeDescription = MarkdownReturner.GetMarkdown(challenge.Description);
+        alert = AlertState.GetAlert();
+    }
+
+    private void labelClick(int Id)
+    {
+        numbers.Add(Id);
+        inputValue = inputValue + Id.ToString();
+        if (numbers.Count() == 4)
+        {
+            IsDiabledNumberPanel = true;
+        }
+    }
+
+    private void ResetNumbers()
+    {
+        numbers.Clear();
+        inputValue = "";
+        IsDiabledNumberPanel = false;
+    }
+
+    private void onSubmit()
+    {
+        if (inputValue == challenge.Solution)
+        {
+            AlertState.SetAlert("true");
+            UserChallengeLogic.UserCompleteChallenge(username, id);
+            status = UserChallengeLogic.UserGetChallengeStatus(username, id);
+        }
+        else
+        {
+            AlertState.SetAlert("false");
+        }
+    }
+
+    private void NextChallenge()
+    {
+        Navigate.NavigateTo($"/Challenge2/{id + 1}");
+    }
+}

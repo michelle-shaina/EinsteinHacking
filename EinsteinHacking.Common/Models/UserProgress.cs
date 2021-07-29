@@ -16,5 +16,7 @@ namespace EinsteinHacking.Models
         public Challenge Challenge { get; set; }
         public Status Status { get; set; }
         public int HintsUsed { get; set; }
+
+        public bool IsValid => Challenge != null;
     }
 }

@@ -1,3 +1,8 @@
+
+﻿@using EinsteinHacking.Models
+@inject AuthenticationStateProvider auth
+@inject EinsteinHacking.Logic.ChallengeLogic ChallengeLogic
+
 ﻿<div class="top-row pl-4 logo navbar navbar-dark">
     <img class="d-block logo-image" src="../assets/images/Logo/EinsteinHackingLogo.svg" alt="Logo Einsteinhacking">
     <a class="navbar-brand" href="">EinsteinHacking</a>
@@ -13,23 +18,32 @@
                 <span class="oi oi-home" aria-hidden="true"></span> Home
             </NavLink>
         </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </li>
+        @if (!string.IsNullOrEmpty(username))
+        {
+            @foreach (var challenge in challenges)
+            {
+                <li class="nav-item px-3">
+                    <NavLink class="@($"nav-link challenge-{challenge.ChallengeID}")" href="@($"/Challenge{challenge.ChallengeID}/{challenge.ChallengeID}")">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> @challenge.Name
+                    </NavLink>
+                </li>
+            }
+        }
     </ul>
 </div>
 
 @code {
     private bool collapseNavMenu = true;
+    private string username;
+    private IEnumerable<Challenge> challenges;
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    protected override void OnInitialized()
+    {
+        username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
+        challenges = ChallengeLogic.GetChallenges();
+    }
 
     private void ToggleNavMenu()
     {

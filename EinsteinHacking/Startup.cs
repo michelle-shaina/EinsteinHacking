@@ -15,6 +15,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using EinsteinHacking.Areas.Identity;
 using EinsteinHacking.Data;
+using EinsteinHacking.Logic;
+using EinsteinHacking.Services;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace EinsteinHacking
 {
@@ -36,8 +39,23 @@ namespace EinsteinHacking
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //Used for email confimation
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
+
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+
+            services.AddScoped<AlertState>();
+            services.AddScoped<MarkdownRendererReturner>();
+            services.AddScoped<ChallengeLogic>();
+            services.AddScoped<HintLogic>();
+            services.AddScoped<UserChallengeLogic>();
+            services.AddScoped<UserStatisticLogic>();
+            services.AddScoped<RuntimeSQL>();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
         }
 
@@ -56,6 +74,8 @@ namespace EinsteinHacking
                 app.UseHsts();
             }
 
+
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

@@ -17,5 +17,7 @@ namespace EinsteinHacking.Models
         public IdentityUser User { get; set; }
         [Required]
         public List<UserProgress> Progress { get; set; }
+
+        public bool IsValid => User != null && Progress != null;
     }
 }
