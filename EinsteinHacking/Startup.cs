@@ -18,6 +18,8 @@ using EinsteinHacking.Data;
 using EinsteinHacking.Logic;
 using EinsteinHacking.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Http;
 
 namespace EinsteinHacking
 {
@@ -40,14 +42,31 @@ namespace EinsteinHacking
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddSingleton<IHttpContextAccessor,
+           HttpContextAccessor>();
+
+            services.AddBlazoredLocalStorage();   // local storage
+            services.AddBlazoredLocalStorage(config =>
+                config.JsonSerializerOptions.WriteIndented = true);  // local storage
+
             //Used for email confimation
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.Cookie.Name = "EinsteinHackingCookie";
+                options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Unspecified;
+                options.Cookie.HttpOnly = false;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                options.LoginPath = "/Identity/Account/Login";
+                options.SlidingExpiration = true;
+            });
+
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
-
 
             services.AddScoped<AlertState>();
             services.AddScoped<MarkdownRendererReturner>();
@@ -73,8 +92,6 @@ namespace EinsteinHacking
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-
             
             app.UseHttpsRedirection();
             app.UseStaticFiles();

@@ -10,7 +10,7 @@
     {
         <div class="accordion-item">
             <h2 class="accordion-header" id="@hint.HintID">
-                <button disabled="@(!hint.IsOpened)" @onclick="@(e => UseHint(convertedHints.IndexOf(hint)))" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-@hint.HintID" aria-expanded="false" aria-controls="panelsStayOpen-@hint.HintID">
+                <button disabled="@(!hint.IsOpened)" @onclick="@(e => UseHint(convertedHints.IndexOf(hint)))" class="accordion-button btn btn-info collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-@hint.HintID" aria-expanded="false" aria-controls="panelsStayOpen-@hint.HintID">
                     Hint #@(convertedHints.IndexOf(hint) + 1) 
                 </button>
             </h2>
