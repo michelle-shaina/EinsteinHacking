@@ -25,7 +25,7 @@ namespace EinsteinHacking.Services
                 case "completed":
                     alert.AlertTitle = "Alert: ";
                     alert.AlertType = "warning";
-                    alert.AlertMessage = "You have already completed the Challenge. Try another one!";
+                    alert.AlertMessage = "Danke für das Ausfüllen dieser Umfrage: https://de.surveymonkey.com/r/J38ZZW3 Deine Antwort war korrekt.";
                     break;
                 case "neutral":
                     alert.AlertTitle = "";
