@@ -1,0 +1,166 @@
+@font-face {
+  font-family: fira;
+  src: url(https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap); }
+/*** Colors ***/
+/*** Fonts ***/
+/*** Page header ***/
+/*** Forms ***/
+/*** Spacing-System ***/
+/*** challenges color ***/
+@font-face {
+  font-family: fira;
+  src: url(https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap); }
+/*** Colors ***/
+/*** Fonts ***/
+/*** Page header ***/
+/*** Forms ***/
+/*** Spacing-System ***/
+/*** challenges color ***/
+body {
+  background-color: #22212c;
+  font-family: "fira", monospace, sans-serif;
+  color: #8a8f98; }
+
+.sidebar .navbar {
+  width: 270px; }
+.sidebar .logo {
+  position: relative; }
+  .sidebar .logo .logo-image {
+    width: 50px;
+    float: left; }
+  .sidebar .logo .navbar-brand {
+    float: left; }
+
+header {
+  background-color: #282a36; }
+  header .logo {
+    position: relative; }
+    header .logo .logo-image {
+      width: 50px;
+      float: left; }
+    header .logo .navbar-brand {
+      float: left; }
+
+.main .top-row {
+  background-color: #282a36;
+  box-shadow: 0 0 10px -10px rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+  z-index: 5; }
+.main .oi {
+  color: #fff; }
+.main .card {
+  background-color: #414558;
+  color: #8a8f98;
+  margin-bottom: 20px;
+  transition-duration: .5s; }
+  .main .cardshadow:hover {
+    transform: translate(4px, -4px);
+    transition-duration: .5s;
+    box-shadow: -8px 8px 0 #5922e5; }
+.main p {
+  color: #8a8f98; }
+.main strong, .main .bold {
+  color: #fff;
+  font-weight: 500; }
+.main a {
+  color: #9580FF;
+  transition-duration: .2s; }
+  .main a:hover {
+    transition-duration: .2s;
+    color: #586bdf; }
+.main h1, .main h2, .main h3, .main h4, .main h5 {
+  color: #fff; }
+.main [class="alert-"]:hover {
+  box-shadow: 0 0 10px -10px rgba(0, 0, 0, 0.15);
+  transition-duration: .5s; }
+.main .alert-primary, .main .alert-secondary {
+  background-color: #414558;
+  color: #8a8f98; }
+.main .alert-success {
+  background-color: #50fa7a;
+  color: #8a8f98; }
+.main .alert-danger {
+  background-color: #ff9581;
+  color: #8a8f98; }
+.main .alert-warning {
+  background-color: #ffca81;
+  color: #8a8f98; }
+.main [type=button].btn {
+  color: #fff; }
+  .main [type=button].btn.btn-primary {
+    background-color: #6d57de;
+    border: #5922e5; }
+  .main [type=button].btn.btn-secondary {
+    background-color: #414558; }
+  .main [type=button].btn.btn-success {
+    background-color: #50fa7a; }
+  .main [type=button].btn.btn-danger {
+    background-color: #ff9581; }
+  .main [type=button].btn.btn-warning {
+    background-color: #ffca81; }
+  .main [type=button].btn.btn-info {
+    background-color: #f3ea62;
+    border-color: #d8bd14; }
+  .main [type=button].btn.btn-link {
+    transition-duration: .2s; }
+    .main [type=button].btn.btn-link:hover {
+      transition-duration: .2s;
+      color: #586bdf; }
+.main table {
+  color: #8a8f98; }
+  .main table th {
+    color: #fff; }
+
+.sidebar {
+  background-color: #282a36;
+  background-image: none; }
+  .sidebar .top-row {
+    background-color: #282a36; }
+
+input.form-control {
+  background-color: #282a36;
+  border: 1px solid #5922e5;
+  color: #fff; }
+  input.form-control [type="search"] {
+    color: #fff; }
+
+.margin-bottom-s {
+  margin-bottom: 20px; }
+
+.margin-top-s {
+  margin-top: 20px; }
+
+footer {
+  border-top: 1px solid #8a8f98; }
+
+.challenge-1 {
+  color: #d0ffcc !important; }
+
+.challenge-2 {
+  color: #8aff80 !important; }
+
+.challenge-3 {
+  color: #ccfff6 !important; }
+
+.challenge-4 {
+  color: #80ffea !important; }
+
+.challenge-5 {
+  color: #ffcce6 !important; }
+
+.challenge-6 {
+  color: #ff80bf !important; }
+
+.challenge-7 {
+  color: #ffd5cc !important; }
+
+.challenge-8 {
+  color: #ff9580 !important; }
+
+.challenge-9 {
+  color: #d5ccff !important; }
+
+.challenge-10 {
+  color: #9580ff !important; }
+
+/*# sourceMappingURL=includes.css.map */

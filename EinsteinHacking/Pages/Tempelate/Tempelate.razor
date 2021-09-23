@@ -1,0 +1,31 @@
+﻿@page "/tempelate"
+@using EinsteinHacking.Models
+
+@inject AuthenticationStateProvider auth
+
+@inject EinsteinHacking.Logic.ChallengeLogic ChallengeLogic
+@inject EinsteinHacking.Logic.HintLogic HintLogic
+@inject EinsteinHacking.Logic.UserChallengeLogic UserChallengeLogic
+
+<h3>Tempelate page</h3>
+<button @onclick="onButtonClick">@username</button>
+<label>@status</label>
+<i>@n.ToString()</i>
+
+@code {
+
+    public string username = "";
+    public List<UserProgress> progresses;
+    public Status status;
+    public bool n;
+
+    public void onButtonClick()
+    {
+        
+        username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
+        status  = UserChallengeLogic.UserGetChallengeStatus(username, 1);
+        UserChallengeLogic.UserStartChallenge(username, 1);
+        UserChallengeLogic.UserCompleteChallenge(username, 1);
+        n = UserChallengeLogic.UserCanUseHint(username, 1);
+    }
+}

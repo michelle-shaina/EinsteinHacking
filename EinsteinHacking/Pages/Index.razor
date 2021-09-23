@@ -1,0 +1,85 @@
+﻿@page "/"
+@inject NavigationManager NavManager
+@using BlazorAnimate
+
+<EinsteinHacking.Shared.Html>
+    <Content>
+
+        <p id="welcomeText">
+            <span id="anim"></span>
+            <span id="shuffle"></span>
+
+            <div class="typewriter-align">
+                <strong id="typed" class="typed"></strong>
+            </div>
+        </p>
+      
+        <Animate Animation="Animations.SlideUp" Duration="TimeSpan.FromSeconds(0.7)">
+            <div class="row">
+
+
+                <div class="col-sm-6">
+                    <img src="../assets/images/hackingcode1.png" id="homePageImages" alt="First slide">
+                </div>
+
+
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="card" id="startCard">
+                            <div class="card-body">
+                                <h5 class="card-title">About the project</h5>
+                                <p class="card-text">First of all, thank you for participating! We created this website for our interdisciplinary project work in order to graduate school. Like in all other school projects with public participations, there will be a statistic behind all of that. Because of that, we would welcome it, if you would share this project and fill out the feedback form at the end of every challenge.</p>
+                                <button type="button" onclick="this.select();document.execCommand('copy')" class="btn btn-primary">Copy URL</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Register</h5>
+                                <p class="card-text">Don't have an acount? No problem? Click the first link to get to the registering-form or click on the second link to get to the login window.</p>
+                                <a href="Identity/Account/Register" class="card-link">Register</a>
+                                <a href="Identity/Account/Login" class="card-link">Login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Animate>
+
+
+        <Animate Animation="Animations.SlideDown" Duration="TimeSpan.FromSeconds(0.5)">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row h-100">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 style="text-align: center" class="card-title">What you'll learn</h5>
+                                <hr />
+                                <table id="indexTable " class="h-75" style="width:100%;">
+                                    <tr>
+                                        <th>Common security issues</th>
+                                        <td> You'll learn what makes an website unsecure.</td>
+                                    </tr>
+                                    <tr>
+                                        <th>How Hackers exploit security issues</th>
+                                        <td>Every challenge represents a way how a hacker may access an website by doing it yourself.</td>
+                                    </tr>
+                                    <tr>
+                                        <th>How to overcome them</th>
+                                        <td>You'll learn how to secure your data so you won't get exploited as easily.</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <img src="../assets/images/loginCode1.png" id="homePageImages" alt="First slide">
+                </div>
+            </div>
+        </Animate>
+
+    </Content>
+</EinsteinHacking.Shared.Html>

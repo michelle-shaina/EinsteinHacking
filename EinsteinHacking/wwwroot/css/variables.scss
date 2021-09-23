@@ -1,0 +1,51 @@
+﻿@font-face {
+    font-family: fira;
+    src: url(https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap);
+}
+
+
+/*** Colors ***/
+$background-color: #22212c;
+
+$base-box-color: #414558;
+$cyan-box-color: #80ffea;
+$green-box-color: #50fa7a;
+$red-box-color: #ff9581;
+$orange-box-color: #ffca81;
+$yellow-box-color: #f3ea62;
+$purple-box-color: #6d57de;
+
+$blue-border-color: #5922e5;
+$yellow-border-color: #d8bd14;
+
+/*** Fonts ***/
+$link-color: #9580FF;
+$link-hover-color: #586bdf;
+$base-font-color: #8a8f98;
+$bold-font-color: #fff;
+$header-color: $bold-font-color;
+
+$base-font: 'fira', monospace, sans-serif;
+
+
+/*** Page header ***/
+$page-header-color: #282a36;
+
+/*** Forms ***/
+$input-background-color: $page-header-color;
+
+/*** Spacing-System ***/
+$spacing-s: 20px;
+$spacing-border-color: $base-font-color;
+
+/*** challenges color ***/
+$challenge-1-color: #d0ffcc;
+$challenge-2-color: #8aff80;
+$challenge-3-color: #ccfff6;
+$challenge-4-color: #80ffea;
+$challenge-5-color: #ffcce6;
+$challenge-6-color: #ff80bf;
+$challenge-7-color: #ffd5cc;
+$challenge-8-color: #ff9580;
+$challenge-9-color: #d5ccff;
+$challenge-10-color: #9580ff;

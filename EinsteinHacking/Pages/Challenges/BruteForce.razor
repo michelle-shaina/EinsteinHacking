@@ -1,0 +1,40 @@
+﻿@page "/Challenge5/{id:int}"
+
+@inject AuthenticationStateProvider auth
+
+<EinsteinHacking.Shared.Html>
+    <Content>
+        <EinsteinHacking.Pages.Components.ChallengeBody id="@id" />
+    </Content>
+</EinsteinHacking.Shared.Html>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private string username;
+
+    protected override void OnInitialized()
+    {
+        username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
+    }
+}
+
+<div style="visibility:hidden;">
+    <code>
+        function checkPW(string) {
+
+        var hash = 0;
+        var pw = "3077374";
+
+        if (string.length == 0) return hash;
+
+        for (i = 0; i &lt; string.length; i++) {
+        char = string.charCodeAt(i);
+        hash = ((hash &lt;&lt; 5) - hash) + char;
+        hash = hash & hash;
+        }
+
+        return (hash.toString() == pw);
+        }
+    </code>
+</div>

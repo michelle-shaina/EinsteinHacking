@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EinsteinHacking.Common\EinsteinHacking.Common.csproj" />
+    <ProjectReference Include="..\EinsteinHacking.DB\EinsteinHacking.DB.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.identity.EntityFrameworkCore" Version="3.1.5" />
+  </ItemGroup>
+</Project>

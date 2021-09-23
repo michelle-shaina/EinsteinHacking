@@ -1,0 +1,25 @@
+﻿@page "/Challenge9/{id:int}"
+
+@inject NavigationManager NavManager
+@inject AuthenticationStateProvider auth
+
+<EinsteinHacking.Shared.Html>
+    <Content>
+        <EinsteinHacking.Pages.Components.ChallengeBody id="@id" />
+    </Content>
+</EinsteinHacking.Shared.Html>
+<a href="/download" class="btn btn-primary btn-lg btn-block" type="button">
+    <span class="oi oi-data-transfer-download"></span>
+   Download Image
+</a>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private string username;
+
+    protected override void OnInitialized()
+    {
+        username = auth.GetAuthenticationStateAsync().Result.User.Identity.Name;
+    }
+}
