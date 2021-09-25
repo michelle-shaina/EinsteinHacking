@@ -3,7 +3,7 @@
 };
 var inc = 0;
 var out = 0;
-var str = '   Welcome to Einstein Hacking!';
+var str = 'Welcome to Einstein Hacking!';
 var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@$%&';
 var t;
 
@@ -14,10 +14,12 @@ var anim = function () {
         out++;
     } else if (out >= str.length) {
         $('shuffle').innerHTML = '';
-        removeInterval(t);
+        clearInterval(t);
     }
-    $('shuffle').innerHTML =
-        chars[Math.floor(Math.random() * chars.length)];
+    if (out < str.length) {
+        $('shuffle').innerHTML =
+            chars[Math.floor(Math.random() * chars.length)];
+    }
 };
 t = setInterval(anim, 25);
 $('anim').innerHTML = '';
