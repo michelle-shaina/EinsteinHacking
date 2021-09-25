@@ -1,25 +1,42 @@
-﻿var $ = function (id) {
-    return document.getElementById(id);
-};
-var inc = 0;
+﻿var inc = 0;
 var out = 0;
 var str = 'Welcome to Einstein Hacking!';
 var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@$%&';
 var t;
+var lastUrl = location.href;
+var hasChanged = false;
 
-var anim = function () {
-    inc++;
-    if (inc % 7 === 0 && out < str.length) {
-        $('anim').appendChild(document.createTextNode(str[out]));
-        out++;
-    } else if (out >= str.length) {
-        $('shuffle').innerHTML = '';
+function shuffleAnime() {
+    if (hasChanged) {
         clearInterval(t);
+        str = 'Welcome to Einstein Hacking!';
+        inc = 0;
+        out = 0;
+        hasChanged = false;
+    } else {
+        inc++;
+        if (inc % 7 == 0 && out < str.length) {
+            document.getElementById('anim').appendChild(document.createTextNode(str[out]));
+            out++;
+        } else if (out >= str.length) {
+            document.getElementById('shuffle').innerHTML = '';
+            clearInterval(t);
+        }
+        if (out < str.length && document.getElementById('shuffle') != null) {
+            document.getElementById('shuffle').innerHTML = chars[Math.floor(Math.random() * chars.length)];
+        }
     }
-    if (out < str.length) {
-        $('shuffle').innerHTML =
-            chars[Math.floor(Math.random() * chars.length)];
+}
+
+function callShuffleAnimationFunction() {
+    hasChanged = false;
+    t = setInterval(shuffleAnime, 25);
+    document.getElementById('anim').innerHTML = '';
+}
+
+new MutationObserver(() => {
+    const url = location.href;
+    if (url !== lastUrl) {
+        hasChanged = true;
     }
-};
-t = setInterval(anim, 25);
-$('anim').innerHTML = '';
+}).observe(document, { subtree: true, childList: true });
