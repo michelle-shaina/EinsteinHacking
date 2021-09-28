@@ -1,0 +1,95 @@
+﻿<br />
+<br />
+
+
+@if (!isOpened)
+{
+<button type="button" class="btn btn-dark" @onclick="openedVideo">
+    <span class="oi oi-video" aria-hidden="true"></span> Show me the Solution and Explanation Video
+</button>
+}
+@if (id == 1 && isOpened)
+{
+<h5>Solution Video</h5>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3d96knEDjAY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+}
+@if (id == 2 && isOpened)
+{
+<h5>Solution Video</h5>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aPzhbd2nMCI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+}
+@if (id == 3 && isOpened)
+{
+<h5>Solution Video</h5>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vGJMc9SSITE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+}
+@if (id == 4 && isOpened)
+{
+<h5>Solution Video</h5>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MCYmdisCKhA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br />
+<br />
+<h5>Explanation Video</h5>
+<a target="_blank" class="page-item" href="https://www.youtube.com/watch?v=rdVPflECed8">Explanation Video - What are Cookies?</a>
+}
+@if (id == 5 && isOpened)
+{
+<h5>Solution Video</h5>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/32fGMWn5RIM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br />
+<br />
+<h5>Explanation Video</h5>
+<a target="_blank" class="page-item" href="https://www.youtube.com/watch?v=kdTpUjd71G8&t">Brute Force algorithm</a>
+}
+@if (id == 6 && isOpened)
+{
+<h5>Solution Video</h5>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/c2UuRfaebHE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br />
+<br />
+<h5>Explanation Video</h5>
+<a target="_blank" class="page-item" href="https://www.youtube.com/watch?v=lc7scxvKQOo">social Engineering Example</a>
+}
+@if (id == 7 && isOpened)
+{
+<h5>Solution Video</h5>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7NaQkvsrjag" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br />
+<br />
+<h5>Explanation Video</h5>
+<a target="_blank" class="page-item" href="https://www.youtube.com/watch?v=wcaiKgQU6VE">Sql Injection</a>
+}
+@if (id == 8 && isOpened)
+{
+<h5>Solution Video</h5>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Anlgydlymvc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br />
+<br />
+<h5>Explanation Video</h5>
+<a target="_blank" class="page-item" href="https://www.youtube.com/watch?v=2BldESGZKB8">Hashing - Decryption</a>
+}
+@if (id == 9 && isOpened)
+{
+<h5>Solution Video</h5>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8oNEPZuL9CM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br />
+<br />
+<h5>Explanation Video</h5>
+<a target="_blank" class="page-item" href="https://www.youtube.com/watch?v=SWnPKI3_7h8&t=32s">What is Steganography?</a>
+}
+@if (id == 10 && isOpened)
+{
+<h5>Solution Video</h5>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8oNEPZuL9CM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+}
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+    private bool isOpened = false;
+
+    private void openedVideo()
+    {
+        isOpened = true;
+    }
+}

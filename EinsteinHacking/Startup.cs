@@ -59,6 +59,7 @@ namespace EinsteinHacking
                 options.Cookie.Name = "EinsteinHackingCookie";
                 options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Unspecified;
                 options.Cookie.HttpOnly = false;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.None;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
                 options.LoginPath = "/Identity/Account/Login";
                 options.SlidingExpiration = true;

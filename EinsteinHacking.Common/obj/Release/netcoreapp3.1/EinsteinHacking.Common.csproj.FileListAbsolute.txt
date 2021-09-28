@@ -7,3 +7,12 @@ C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Common\ob
 C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Common\obj\Release\netcoreapp3.1\EinsteinHacking.Common.AssemblyInfo.cs
 C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Common\obj\Release\netcoreapp3.1\EinsteinHacking.Common.dll
 C:\Users\miche\Desktop\EinsteinHacking\EinsteinHacking\EinsteinHacking.Common\obj\Release\netcoreapp3.1\EinsteinHacking.Common.pdb
+C:\Users\miche\Desktop\Einstein\EinsteinHacking-master\EinsteinHacking-master\EinsteinHacking.Common\bin\Release\netcoreapp3.1\EinsteinHacking.Common.deps.json
+C:\Users\miche\Desktop\Einstein\EinsteinHacking-master\EinsteinHacking-master\EinsteinHacking.Common\bin\Release\netcoreapp3.1\EinsteinHacking.Common.dll
+C:\Users\miche\Desktop\Einstein\EinsteinHacking-master\EinsteinHacking-master\EinsteinHacking.Common\bin\Release\netcoreapp3.1\EinsteinHacking.Common.pdb
+C:\Users\miche\Desktop\Einstein\EinsteinHacking-master\EinsteinHacking-master\EinsteinHacking.Common\obj\Release\netcoreapp3.1\EinsteinHacking.Common.csprojAssemblyReference.cache
+C:\Users\miche\Desktop\Einstein\EinsteinHacking-master\EinsteinHacking-master\EinsteinHacking.Common\obj\Release\netcoreapp3.1\EinsteinHacking.Common.csproj.CoreCompileInputs.cache
+C:\Users\miche\Desktop\Einstein\EinsteinHacking-master\EinsteinHacking-master\EinsteinHacking.Common\obj\Release\netcoreapp3.1\EinsteinHacking.Common.AssemblyInfoInputs.cache
+C:\Users\miche\Desktop\Einstein\EinsteinHacking-master\EinsteinHacking-master\EinsteinHacking.Common\obj\Release\netcoreapp3.1\EinsteinHacking.Common.AssemblyInfo.cs
+C:\Users\miche\Desktop\Einstein\EinsteinHacking-master\EinsteinHacking-master\EinsteinHacking.Common\obj\Release\netcoreapp3.1\EinsteinHacking.Common.dll
+C:\Users\miche\Desktop\Einstein\EinsteinHacking-master\EinsteinHacking-master\EinsteinHacking.Common\obj\Release\netcoreapp3.1\EinsteinHacking.Common.pdb

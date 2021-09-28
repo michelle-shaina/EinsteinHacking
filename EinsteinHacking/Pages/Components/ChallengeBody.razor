@@ -1,5 +1,6 @@
 ﻿@using EinsteinHacking.Models
 @using EinsteinHacking.Services
+@using Microsoft.AspNetCore.Authentication.Cookies
 
 @inject MarkdownRendererReturner MarkdownReturner
 @inject NavigationManager Navigate
@@ -9,7 +10,6 @@
 @inject EinsteinHacking.Logic.HintLogic HintLogic
 @inject EinsteinHacking.Logic.UserChallengeLogic UserChallengeLogic
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContext
-
 
 <div class="h-100">
     <div class="card text-center">
@@ -104,6 +104,7 @@
     {
         if (id == 4)
         {
+            string fuck = HttpContext.HttpContext.Request.Cookies["Key"];
             var cook = HttpContext.HttpContext.Request.Cookies["EinsteinHackingCookie"];
             challenge.Solution = cook.ToString();
         }
@@ -131,11 +132,12 @@
 
     private void NextChallenge()
     {
-        int nextId = id+1;
+        int nextId = id + 1;
         if (id == 10)
         {
             Navigate.NavigateTo("/");
-        } else
+        }
+        else
         {
             Navigate.NavigateTo($"/Challenge{nextId}/{nextId}");
         }

@@ -25,7 +25,5 @@ namespace EinsteinHacking.Models
                     && !String.IsNullOrEmpty(Name)
                     && PointsOnCompletion > 0
                     && PointsRemovedPerHintUsed > 0;
-        
-
     }
 }

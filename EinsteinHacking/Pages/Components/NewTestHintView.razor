@@ -25,6 +25,10 @@
             </div>
         </div>
     }
+    @if (!UserChallengeLogic.UserCanUseHint(username, challengeID) && counter == 3)
+    {
+        <Videos id="challengeID"></Videos>
+    }
 </div>
 
 @code {
@@ -35,6 +39,7 @@
     private List<HintConvertHelper> convertedHints = new List<HintConvertHelper>();
     private bool UserClickedHint = false;
     private bool IsFirstHintOpened = false;
+    private int counter = 0;
 
     protected override void OnInitialized()
     {
@@ -66,6 +71,7 @@
     {
         if (!UserClickedHint)
         {
+            counter++;
             convertedHints[HintId].ShouldShowCaption = true;
             if (HintId < (convertedHints.Count() - 1))
             {
