@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "S3L/FTDDrumqrQgRWOQUKtORdkfUQKhoWWA6ngodth/tRUCLyvySPVbK6v2pDNzDtGhwUjFIGox3lavrqgItvQ==",
+  "dgSpecHash": "T8poVDbtc8yzi2lLZxb3ql3O918+rsJJ0JYFuY18+Qv0fRc0/f568XSkqES/SRdLItsJyGuQfqBa9gOW6LIikA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\miche\\Desktop\\Einstein\\EinsteinHacking-master\\EinsteinHacking-master\\EinsteinHacking.Common\\EinsteinHacking.Common.csproj",
+  "projectFilePath": "C:\\Users\\miche\\Desktop\\Einstein\\EinsteinHacking.Common\\EinsteinHacking.Common.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\miche\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.5\\microsoft.aspnetcore.cryptography.internal.3.1.5.nupkg.sha512",
     "C:\\Users\\miche\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.5\\microsoft.aspnetcore.cryptography.keyderivation.3.1.5.nupkg.sha512",

@@ -46,3 +46,15 @@ C:\Users\miche\Desktop\Einstein\EinsteinHacking-master\EinsteinHacking-master\Ei
 C:\Users\miche\Desktop\Einstein\EinsteinHacking-master\EinsteinHacking-master\EinsteinHacking.DB\obj\Debug\netcoreapp3.1\EinsteinHacking.DB.csproj.CopyComplete
 C:\Users\miche\Desktop\Einstein\EinsteinHacking-master\EinsteinHacking-master\EinsteinHacking.DB\obj\Debug\netcoreapp3.1\EinsteinHacking.DB.dll
 C:\Users\miche\Desktop\Einstein\EinsteinHacking-master\EinsteinHacking-master\EinsteinHacking.DB\obj\Debug\netcoreapp3.1\EinsteinHacking.DB.pdb
+C:\Users\miche\Desktop\Einstein\EinsteinHacking.DB\bin\Debug\netcoreapp3.1\EinsteinHacking.DB.deps.json
+C:\Users\miche\Desktop\Einstein\EinsteinHacking.DB\bin\Debug\netcoreapp3.1\EinsteinHacking.DB.dll
+C:\Users\miche\Desktop\Einstein\EinsteinHacking.DB\bin\Debug\netcoreapp3.1\EinsteinHacking.DB.pdb
+C:\Users\miche\Desktop\Einstein\EinsteinHacking.DB\bin\Debug\netcoreapp3.1\EinsteinHacking.Common.dll
+C:\Users\miche\Desktop\Einstein\EinsteinHacking.DB\bin\Debug\netcoreapp3.1\EinsteinHacking.Common.pdb
+C:\Users\miche\Desktop\Einstein\EinsteinHacking.DB\obj\Debug\netcoreapp3.1\EinsteinHacking.DB.csprojAssemblyReference.cache
+C:\Users\miche\Desktop\Einstein\EinsteinHacking.DB\obj\Debug\netcoreapp3.1\EinsteinHacking.DB.AssemblyInfoInputs.cache
+C:\Users\miche\Desktop\Einstein\EinsteinHacking.DB\obj\Debug\netcoreapp3.1\EinsteinHacking.DB.AssemblyInfo.cs
+C:\Users\miche\Desktop\Einstein\EinsteinHacking.DB\obj\Debug\netcoreapp3.1\EinsteinHacking.DB.csproj.CoreCompileInputs.cache
+C:\Users\miche\Desktop\Einstein\EinsteinHacking.DB\obj\Debug\netcoreapp3.1\EinsteinHacking.DB.csproj.CopyComplete
+C:\Users\miche\Desktop\Einstein\EinsteinHacking.DB\obj\Debug\netcoreapp3.1\EinsteinHacking.DB.dll
+C:\Users\miche\Desktop\Einstein\EinsteinHacking.DB\obj\Debug\netcoreapp3.1\EinsteinHacking.DB.pdb

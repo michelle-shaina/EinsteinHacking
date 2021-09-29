@@ -57,7 +57,7 @@ namespace EinsteinHacking
             {
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
                 options.Cookie.Name = "EinsteinHackingCookie";
-                options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.Unspecified;
+                options.Cookie.SameSite = Microsoft.AspNetCore.Http.SameSiteMode.None;
                 options.Cookie.HttpOnly = false;
                 options.Cookie.SecurePolicy = CookieSecurePolicy.None;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(60);

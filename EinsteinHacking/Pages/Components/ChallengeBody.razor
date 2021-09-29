@@ -1,6 +1,5 @@
 ﻿@using EinsteinHacking.Models
 @using EinsteinHacking.Services
-@using Microsoft.AspNetCore.Authentication.Cookies
 
 @inject MarkdownRendererReturner MarkdownReturner
 @inject NavigationManager Navigate
@@ -10,6 +9,7 @@
 @inject EinsteinHacking.Logic.HintLogic HintLogic
 @inject EinsteinHacking.Logic.UserChallengeLogic UserChallengeLogic
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContext
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 
 <div class="h-100">
     <div class="card text-center">
@@ -34,28 +34,25 @@
             <br />
             @if (status.Equals(Status.Ended))
             {
-                <a href="https://de.surveymonkey.com/r/J38ZZW3" target="_blank">
-                    <h5>Please take a moment to fill out a quick survey:</h5>
-                    <h5>Click here to get to the survey!</h5>
-                </a>
+<a href="https://de.surveymonkey.com/r/J38ZZW3" target="_blank">
+    <h5>Please take a moment to fill out a quick survey:</h5>
+    <h5>Click here to get to the survey!</h5>
+</a>
                 <br />
-                <br />
-                @if (id == 10)
-                {
-                    <button type="button" class="btn btn-dark" @onclick="NextChallenge">
-                        <span class="oi oi-home" aria-hidden="true"></span> Home
-                    </button>
-                }
-                else
-                {
-                    <button type="button" class="btn btn-dark" @onclick="NextChallenge">
-                        <span class="oi oi-arrow-circle-right" aria-hidden="true"></span> Next Challenge
-                    </button>
-                }
-            }
-            else
-            {
-                <EinsteinHacking.Pages.Components.NewTestHintView challengeID="@id" />}
+                                <br />
+                                                @if (id == 10)
+                                                {
+                                <button type="button" class="btn btn-dark" @onclick="NextChallenge">
+                                    <span class="oi oi-home" aria-hidden="true"></span> Home
+                                </button> }
+                                                else
+                                                {
+                                <button type="button" class="btn btn-dark" @onclick="NextChallenge">
+                                    <span class="oi oi-arrow-circle-right" aria-hidden="true"></span> Next Challenge
+                                </button>                } }
+                                                            else
+                                                            {
+                                                <EinsteinHacking.Pages.Components.NewTestHintView challengeID="@id" />}
         </div>
     </div>
 </div>
@@ -69,9 +66,18 @@
     private IEnumerable<Hint> hints;
     private Challenge challenge;
     private Status status;
+    private string cookieFromLocal = "";
     private string username;
     private string inputValue;
     private bool canUserUseHint;
+
+    protected override async Task OnInitializedAsync()
+    {
+        @if (id == 4)
+        {
+            cookieFromLocal = await localStorage.GetItemAsync<string>("EinsteinHackingCookie");
+        }
+    }
 
     protected override void OnInitialized()
     {
@@ -104,9 +110,8 @@
     {
         if (id == 4)
         {
-            string fuck = HttpContext.HttpContext.Request.Cookies["Key"];
-            var cook = HttpContext.HttpContext.Request.Cookies["EinsteinHackingCookie"];
-            challenge.Solution = cook.ToString();
+           // var cook = HttpContext.HttpContext.Request.Cookies["EinsteinHackingCookie"];
+            challenge.Solution = cookieFromLocal;
         }
         if (inputValue == challenge.Solution)
         {
